@@ -2142,7 +2142,8 @@
 
         /* ===== AUTH BUTTONS & SESSION STYLES ===== */
 
-        .auth-btn {
+
+        nav .auth-btn, .nav-menu .auth-btn, .auth-nav .auth-btn {
             background: linear-gradient(135deg, #ff6b35, #d94a1f) !important;
             color: white !important;
             border: 1px solid rgba(255, 107, 53, 0.4) !important;
