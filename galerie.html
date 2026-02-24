@@ -943,7 +943,10 @@
                 try {
                     const response = await fetch('/api/upload', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
                     });
                     const data = await response.json();
                     if (!response.ok) {
