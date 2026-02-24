@@ -181,7 +181,7 @@ module.exports = async function handler(req, res) {
       return res.status(500).json({ error: 'Impossible de sauvegarder le post.' });
     }
 
-    return res.status(201).json({ success: true, post: postData });
+    return res.status(201).json({ success: true, post: postData, fileUrl: postData.media_url });
   });
 
   req.pipe(busboy);

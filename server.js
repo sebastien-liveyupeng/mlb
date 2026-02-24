@@ -32,24 +32,9 @@ require('dotenv').config({ path: '.env.local' });
 const PORT = 3002;
 
 const server = http.createServer((req, res) => {
-    // Handle file upload endpoint
+    // Route /api/upload vers le handler Supabase
     if (req.method === 'POST' && pathname === '/api/upload') {
-      upload.single('file')(req, res, function (err) {
-        if (err) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ error: err.message }));
-          return;
-        }
-        if (!req.file) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ error: 'Aucun fichier reçu.' }));
-          return;
-        }
-        // Return file info and URL
-        const fileUrl = `/uploads/${req.file.filename}`;
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: true, fileUrl, filename: req.file.filename }));
-      });
+      mediaUploadHandler(req, res);
       return;
     }
   const parsedUrl = url.parse(req.url, true);
