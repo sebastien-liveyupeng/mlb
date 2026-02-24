@@ -9,6 +9,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&family=Russo+One&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
+                /* Centrage horizontal du menu de navigation */
+                .header-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    max-width: 1300px;
+                    margin: 0 auto;
+                    padding: 0 2rem;
+                }
+
+                nav {
+                    flex: 1;
+                }
+
+                .nav-menu {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1.5rem;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .nav-item {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .nav-menu .active {
+                    border-bottom: 2px solid #ff6b35;
+                    color: #ff6b35 !important;
+                }
+
+                @media (max-width: 900px) {
+                    .header-content {
+                        flex-direction: column;
+                        padding: 0 1rem;
+                    }
+                    .nav-menu {
+                        flex-direction: column;
+                        gap: 0.5rem;
+                    }
+                }
         /* About Hero Logo Background */
         .about-hero::before {
             content: '';
