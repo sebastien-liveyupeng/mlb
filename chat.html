@@ -186,7 +186,6 @@
     </div>
 
     <script src="auth-session.js"></script>
-    <script src="/api/chat.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // Hamburger menu toggle
@@ -222,8 +221,8 @@
         // Affichage des utilisateurs (amis)
         async function loadFriendsOnline() {
             const { data, error } = await supabase
-                .from('auth.users')
-                .select('id, email');
+                .from('users')
+                .select('id, email, username, is_online');
             const container = document.getElementById('friendsOnline');
             if (error || !data || data.length === 0) {
                 container.innerHTML = '<div class="no-friends">Aucun membre</div>';
@@ -239,31 +238,31 @@
         }
 
         // Affichage des messages publics
-        async function loadMessages() {
-            const { data, error } = await supabase
-                .from('messages')
-                .select('id, user_id, username, email, message, created_at')
-                .order('created_at', { ascending: true });
-            const box = document.getElementById('chatBox');
-            if (error || !data || data.length === 0) {
-                box.innerHTML = '<div class="no-msg">Aucun message</div>';
-                return;
-            }
-            box.innerHTML = `
-                <div class="messages-list">
-                    ${data.map(msg => `
-                        <div class="message${msg.user_id === localStorage.getItem('user_id') ? ' own' : ''}">
-                            <span class="msg-sender">${msg.username || msg.email}</span>
-                            <span class="msg-content">${msg.message}</span>
-                            <span class="msg-date">${new Date(msg.created_at).toLocaleTimeString()}</span>
-                        </div>
-                    `).join('')}
-                </div>
-                <div class="chat-input-area">
-                    <input type="text" id="messageInput" placeholder="Votre message...">
-                    <button onclick="sendMessage()"><i class='bx bx-send'></i></button>
-                </div>
-            `;
+            async function loadMessages() {
+                const box = document.getElementById('chatBox');
+                const { data, error } = await supabase
+                    .from('messages')
+                    .select('*')
+                    .order('created_at', { ascending: true });
+                if (error || !data || data.length === 0) {
+                    box.innerHTML = '<div class="no-messages">Aucun message</div>';
+                    return;
+                }
+                box.innerHTML = `
+                    <div class="messages-list">
+                        ${data.map(msg => `
+                            <div class="message${msg.user_id === localStorage.getItem('user_id') ? ' own' : ''}">
+                                <span class="msg-sender">${msg.username || msg.email}</span>
+                                <span class="msg-content">${msg.message}</span>
+                                <span class="msg-date">${new Date(msg.created_at).toLocaleTimeString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="messageInput" placeholder="Votre message...">
+                        <button onclick="sendMessage()"><i class='bx bx-send'></i></button>
+                    </div>
+                `;
         }
 
         // Envoi d'un message
