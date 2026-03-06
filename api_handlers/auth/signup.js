@@ -50,7 +50,7 @@ module.exports = async function handler(req, res) {
     }
 
     // Synchronisation dans la table public.users
-    await supabase.from('users').insert([
+    const insertResult = await supabase.from('users').insert([
       {
         id: data.user.id,
         email: data.user.email,
@@ -58,6 +58,9 @@ module.exports = async function handler(req, res) {
         is_online: true
       }
     ]);
+    if (insertResult.error) {
+      console.error('DB insert error:', insertResult.error.message);
+    }
 
     return res.status(201).json({
       success: true,
