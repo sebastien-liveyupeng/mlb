@@ -187,6 +187,7 @@
 
     <script src="auth-session.js"></script>
     <script src="/api/chat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
@@ -200,6 +201,103 @@
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
             });
+        });
+
+        // Supabase config
+        const SUPABASE_URL = 'https://tqvmiggqjzgjrmkzkbcp.supabase.com';
+        const SUPABASE_KEY = 'sb_publishable_O_UoFHE5rB2kkFmeFKgaKQ_FidnsQ-U';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Affichage des amis connectés
+        async function loadFriendsOnline() {
+            const { data, error } = await supabase
+                .from('friends')
+                .select('id, username, avatar_url, is_online')
+                .eq('is_online', true);
+            const container = document.getElementById('friendsOnline');
+            if (error || !data || data.length === 0) {
+                container.innerHTML = '<div class="no-friends">Aucun ami connecté</div>';
+                return;
+            }
+            container.innerHTML = data.map(friend => `
+                <div class="friend-online">
+                    <img src="${friend.avatar_url || 'assets/avatars/default.png'}" class="friend-avatar" alt="avatar">
+                    <span class="friend-name">${friend.username}</span>
+                    <span class="online-dot"></span>
+                </div>
+            `).join('');
+        }
+
+        // Affichage des conversations
+        async function loadConversations() {
+            const userId = localStorage.getItem('user_id');
+            const { data, error } = await supabase
+                .from('conversations')
+                .select('id, user1, user2, last_message, updated_at')
+                .or(`user1.eq.${userId},user2.eq.${userId}`)
+                .order('updated_at', { ascending: false });
+            const container = document.getElementById('conversationsList');
+            if (error || !data || data.length === 0) {
+                container.innerHTML = '<div class="no-conv">Aucune conversation</div>';
+                return;
+            }
+            container.innerHTML = data.map(conv => `
+                <div class="conversation-item" onclick="openConversation('${conv.id}')">
+                    <span class="conv-user">${conv.user1 === userId ? conv.user2 : conv.user1}</span>
+                    <span class="conv-last">${conv.last_message || ''}</span>
+                    <span class="conv-date">${new Date(conv.updated_at).toLocaleString()}</span>
+                </div>
+            `).join('');
+        }
+
+        // Affichage des messages d'une conversation
+        async function openConversation(convId) {
+            const { data, error } = await supabase
+                .from('messages')
+                .select('id, sender, content, created_at')
+                .eq('conversation_id', convId)
+                .order('created_at', { ascending: true });
+            const box = document.getElementById('chatBox');
+            if (error || !data) {
+                box.innerHTML = '<div class="no-msg">Erreur de chargement</div>';
+                return;
+            }
+            box.innerHTML = `
+                <div class="messages-list">
+                    ${data.map(msg => `
+                        <div class="message${msg.sender === localStorage.getItem('user_id') ? ' own' : ''}">
+                            <span class="msg-sender">${msg.sender}</span>
+                            <span class="msg-content">${msg.content}</span>
+                            <span class="msg-date">${new Date(msg.created_at).toLocaleTimeString()}</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="messageInput" placeholder="Votre message...">
+                    <button onclick="sendMessage('${convId}')"><i class='bx bx-send'></i></button>
+                </div>
+            `;
+        }
+
+        // Envoi d'un message
+        async function sendMessage(convId) {
+            const input = document.getElementById('messageInput');
+            const content = input.value.trim();
+            if (!content) return;
+            const sender = localStorage.getItem('user_id');
+            const { error } = await supabase
+                .from('messages')
+                .insert([{ conversation_id: convId, sender, content }]);
+            if (!error) {
+                input.value = '';
+                openConversation(convId);
+            }
+        }
+
+        // Initialisation
+        window.addEventListener('DOMContentLoaded', () => {
+            loadFriendsOnline();
+            loadConversations();
         });
     </script>
 </body>
