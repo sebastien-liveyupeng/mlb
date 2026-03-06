@@ -1,12 +1,18 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Gascom - Team eSport Elite</title>
+    <link rel="icon" type="image/png" href="assets/Ges-white.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&family=Russo+One&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="background">
-        <div class="animated-bg"></div>
-    </div>
-
+    <div class="bg-animation"></div>
     <!-- Header -->
     <header>
         <div class="header-content">
@@ -54,20 +60,28 @@
         </div>
     </header>
 
-    <!-- Main Chat Content -->
-    <div class="chat-container">
-        <div class="chat-header">
-            <h1 class="hero-title">Chat Gascom</h1>
-            <p class="hero-subtitle">Connectez-vous pour participer aux discussions de l'élite</p>
-        </div>
+    <!-- Chat Section -->
+    <main>
+        <section class="chat-section">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h1 class="hero-title">Chat Gascom</h1>
+                    <p class="hero-subtitle">Discutez avec vos amis et l'élite de Gascom</p>
+                </div>
+                <div class="chat-friends-online" id="friendsOnline">
+                    <!-- Amis connectés affichés ici dynamiquement -->
+                </div>
+                <div class="chat-conversations" id="conversationsList">
+                    <!-- Liste des conversations dynamiques -->
+                </div>
+                <div class="chat-box" id="chatBox">
+                    <!-- Zone de messages et input -->
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <div id="chatContent">
-            <!-- Will be filled by JavaScript -->
-        </div>
-    </div>
-
-    <!-- Auth Modals -->
-    <!-- Login Modal -->
+    <!-- Modals Auth/Profile -->
     <div id="loginModal" class="auth-modal">
         <div class="auth-modal-content">
             <button class="auth-modal-close" onclick="closeLoginModal()">&times;</button>
@@ -80,13 +94,13 @@
                     <label for="login-email-modal">
                         <i class='bx bx-envelope'></i> Email
                     </label>
-                    <input type="email" id="login-email-modal" placeholder="votre@email.com" autocomplete="email" required>
+                    <input type="email" id="login-email-modal" placeholder="votre@email.com" required>
                 </div>
                 <div class="form-group">
                     <label for="login-password-modal">
                         <i class='bx bx-lock-alt'></i> Mot de passe
                     </label>
-                    <input type="password" id="login-password-modal" placeholder="••••••••" autocomplete="current-password" required>
+                    <input type="password" id="login-password-modal" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="auth-submit-btn">
                     <i class='bx bx-log-in'></i> Se connecter
@@ -94,36 +108,33 @@
                 <div id="login-error-modal" class="error"></div>
                 <div id="login-success-modal" class="success"></div>
             </form>
-            <p class="auth-footer">Pas encore de compte ? <a href="#" onclick="openSignupModal(); closeLoginModal();">Inscrivez-vous</a></p>
         </div>
     </div>
-
-    <!-- Signup Modal -->
     <div id="signupModal" class="auth-modal">
         <div class="auth-modal-content">
             <button class="auth-modal-close" onclick="closeSignupModal()">&times;</button>
             <div class="auth-header">
                 <h2>Inscription</h2>
-                <p class="auth-subtitle">Créez votre compte Gascom</p>
+                <p class="auth-subtitle">Rejoignez la communauté Gascom</p>
             </div>
             <form onsubmit="handleSignupModal(event)">
                 <div class="form-group">
                     <label for="signup-username-modal">
                         <i class='bx bx-user'></i> Nom d'utilisateur
                     </label>
-                    <input type="text" id="signup-username-modal" placeholder="votre_pseudo" autocomplete="username" required>
+                    <input type="text" id="signup-username-modal" placeholder="votre_pseudo" required>
                 </div>
                 <div class="form-group">
                     <label for="signup-email-modal">
                         <i class='bx bx-envelope'></i> Email
                     </label>
-                    <input type="email" id="signup-email-modal" placeholder="votre@email.com" autocomplete="email" required>
+                    <input type="email" id="signup-email-modal" placeholder="votre@email.com" required>
                 </div>
                 <div class="form-group">
                     <label for="signup-password-modal">
                         <i class='bx bx-lock-alt'></i> Mot de passe
                     </label>
-                    <input type="password" id="signup-password-modal" placeholder="••••••••" autocomplete="new-password" required>
+                    <input type="password" id="signup-password-modal" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="auth-submit-btn">
                     <i class='bx bx-user-plus'></i> S'inscrire
@@ -131,11 +142,8 @@
                 <div id="signup-error-modal" class="error"></div>
                 <div id="signup-success-modal" class="success"></div>
             </form>
-            <p class="auth-footer">Vous avez un compte ? <a href="#" onclick="openLoginModal(); closeSignupModal();">Connectez-vous</a></p>
         </div>
     </div>
-
-    <!-- Profile Modal -->
     <div id="profileModal" class="auth-modal">
         <div class="auth-modal-content">
             <button class="auth-modal-close" onclick="closeProfileModal()">&times;</button>
@@ -148,25 +156,25 @@
                     <label for="profile-username">
                         <i class='bx bx-user'></i> Nom d'utilisateur
                     </label>
-                    <input type="text" id="profile-username" placeholder="Votre pseudo" autocomplete="username" required>
+                    <input type="text" id="profile-username" placeholder="Votre pseudo" required>
                 </div>
                 <div class="form-group">
                     <label for="profile-email">
                         <i class='bx bx-envelope'></i> Email
                     </label>
-                    <input type="email" id="profile-email" placeholder="votre@email.com" autocomplete="email" required>
+                    <input type="email" id="profile-email" placeholder="votre@email.com" required>
                 </div>
                 <div class="form-group">
                     <label for="profile-current-password">
                         <i class='bx bx-lock-alt'></i> Mot de passe actuel
                     </label>
-                    <input type="password" id="profile-current-password" placeholder="••••••••" autocomplete="current-password">
+                    <input type="password" id="profile-current-password" placeholder="••••••••">
                 </div>
                 <div class="form-group">
                     <label for="profile-new-password">
                         <i class='bx bx-lock'></i> Nouveau mot de passe (optionnel)
                     </label>
-                    <input type="password" id="profile-new-password" placeholder="••••••••" autocomplete="new-password">
+                    <input type="password" id="profile-new-password" placeholder="••••••••">
                 </div>
                 <button type="submit" class="auth-submit-btn">
                     <i class='bx bx-save'></i> Sauvegarder
@@ -178,219 +186,21 @@
     </div>
 
     <script src="auth-session.js"></script>
+    <script src="/api/chat.js"></script>
     <script>
         // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
         });
-
-        // Close menu when a link is clicked
         document.querySelectorAll('.nav-item a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
             });
         });
-
-        // Chat functionality
-        let currentUser = null;
-        let pollInterval = null;
-        const POLL_INTERVAL = 2000; // 2 seconds
-
-        // Initialize chat on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            checkUserSession();
-            initializeChat();
-        });
-
-        function initializeChat() {
-            const token = localStorage.getItem('access_token');
-            
-            if (!token) {
-                renderAuthRequired();
-                return;
-            }
-
-            // Get current user info
-            getCurrentUser();
-            renderChatInterface();
-            loadMessages();
-            startPolling();
-        }
-
-        function getCurrentUser() {
-            try {
-                const token = localStorage.getItem('access_token');
-                const decodedToken = JSON.parse(atob(token.split('.')[1]));
-                currentUser = {
-                    id: decodedToken.sub,
-                    email: decodedToken.email
-                };
-                
-                // Get username from localStorage (set during login)
-                const userData = localStorage.getItem('user_data');
-                if (userData) {
-                    const parsed = JSON.parse(userData);
-                    currentUser.username = parsed.username || parsed.email.split('@')[0];
-                }
-            } catch (e) {
-                console.error('Error getting current user:', e);
-            }
-        }
-
-        function renderAuthRequired() {
-            const chatContent = document.getElementById('chatContent');
-            chatContent.innerHTML = `
-                <div class="chat-auth-required">
-                    <div>
-                        <i class='bx bx-lock'></i>
-                        <p>Connectez-vous pour accéder au chat</p>
-                        <button onclick="openLoginModal()">Se connecter</button>
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderChatInterface() {
-            const chatContent = document.getElementById('chatContent');
-            chatContent.innerHTML = `
-                <div class="chat-wrapper">
-                    <div class="chat-messages" id="chatMessages"></div>
-                    <div class="chat-input-area">
-                        <input type="text" class="chat-input" id="messageInput" placeholder="Tapez votre message..." autocomplete="off">
-                        <button class="chat-send-btn" onclick="sendMessage()">
-                            <i class='bx bx-send'></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-
-            // Add enter key support
-            document.getElementById('messageInput').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-        }
-
-        async function loadMessages() {
-            try {
-                const token = localStorage.getItem('access_token');
-                const response = await fetch('/api/chat/messages', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                if (!response.ok) {
-                    console.error('Failed to load messages');
-                    return;
-                }
-
-                const data = await response.json();
-                displayMessages(data.messages || []);
-            } catch (error) {
-                console.error('Error loading messages:', error);
-            }
-        }
-
-        const PRIVATE_PREFIX = '[PRIVE]';
-
-        function isPrivateMessage(content) {
-            return (content || '').trim().toUpperCase().startsWith(PRIVATE_PREFIX);
-        }
-
-        function displayMessages(messages) {
-            const chatMessages = document.getElementById('chatMessages');
-            const publicMessages = (messages || []).filter(msg => !isPrivateMessage(msg.message));
-
-            if (publicMessages.length === 0) {
-                chatMessages.innerHTML = '<div class="message system"><div class="message-content"><div class="message-text">Aucun message pour le moment. Soyez le premier à écrire !</div></div></div>';
-                return;
-            }
-
-            chatMessages.innerHTML = publicMessages.map(msg => {
-                const isOwn = msg.user_id === currentUser.id;
-                const avatar = (msg.username || msg.email)[0].toUpperCase();
-                const time = new Date(msg.created_at).toLocaleTimeString('fr-FR', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
-
-                return `
-                    <div class="message ${isOwn ? 'own' : ''}">
-                        <div class="message-avatar">${avatar}</div>
-                        <div class="message-content">
-                            <div class="message-header">
-                                <span class="message-username">${msg.username || msg.email}</span>
-                                <span class="message-time">${time}</span>
-                            </div>
-                            <div class="message-text">${escapeHtml(msg.message)}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-
-            // Auto-scroll to bottom
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        async function sendMessage() {
-            const input = document.getElementById('messageInput');
-            const message = input.value.trim();
-
-            if (!message) return;
-
-            try {
-                const token = localStorage.getItem('access_token');
-                const response = await fetch('/api/chat/send', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ message })
-                });
-
-                if (!response.ok) {
-                    console.error('Failed to send message');
-                    return;
-                }
-
-                input.value = '';
-                loadMessages();
-            } catch (error) {
-                console.error('Error sending message:', error);
-            }
-        }
-
-        function startPolling() {
-            pollInterval = setInterval(() => {
-                loadMessages();
-            }, POLL_INTERVAL);
-        }
-
-        function stopPolling() {
-            if (pollInterval) {
-                clearInterval(pollInterval);
-            }
-        }
-
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // Cleanup polling on page unload
-        window.addEventListener('beforeunload', stopPolling);
     </script>
 </body>
 </html>
