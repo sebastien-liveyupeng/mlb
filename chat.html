@@ -214,9 +214,12 @@
         });
 
         // Supabase config
-        const SUPABASE_URL = 'https://tqvmiggqjzgjrmkzkbcp.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_O_UoFHE5rB2kkFmeFKgaKQ_FidnsQ-U';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        if (!window.supabaseClient) {
+            const SUPABASE_URL = 'https://tqvmiggqjzgjrmkzkbcp.supabase.co';
+            const SUPABASE_KEY = 'sb_publishable_O_UoFHE5rB2kkFmeFKgaKQ_FidnsQ-U';
+            window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        }
+        const supabase = window.supabaseClient;
 
         // Affichage des utilisateurs (amis)
         async function loadFriendsOnline() {
