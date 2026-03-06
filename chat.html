@@ -212,7 +212,7 @@
         async function loadFriendsOnline() {
             const { data, error } = await supabase
                 .from('users')
-                .select('id, username, email');
+                .select('id, username, email, is_online');
             const container = document.getElementById('friendsOnline');
             if (error || !data || data.length === 0) {
                 container.innerHTML = '<div class="no-friends">Aucun membre</div>';
@@ -222,6 +222,7 @@
                 <div class="friend-online">
                     <span class="friend-avatar">${user.username ? user.username[0].toUpperCase() : '?'}</span>
                     <span class="friend-name">${user.username || user.email}</span>
+                    <span class="online-dot" style="background:${user.is_online ? '#00e676' : '#888'}"></span>
                 </div>
             `).join('');
         }
