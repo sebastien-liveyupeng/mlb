@@ -192,15 +192,26 @@
         // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        hamburger.addEventListener('click', () => {
+        function toggleMenu() {
             navMenu.classList.toggle('active');
             hamburger.classList.toggle('active');
-        });
+        }
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Ferme le menu quand on clique sur un lien
         document.querySelectorAll('.nav-item a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
             });
+        });
+
+        // Responsive : ferme le menu si on clique en dehors
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
 
         // Supabase config
