@@ -211,9 +211,8 @@
         // Affichage des utilisateurs (amis)
         async function loadFriendsOnline() {
             const { data, error } = await supabase
-                .from('users')
-                .select('id, username, email, is_online');
-            // Si la colonne is_online n'existe pas, tous les points seront gris
+                .from('auth.users')
+                .select('id, email');
             const container = document.getElementById('friendsOnline');
             if (error || !data || data.length === 0) {
                 container.innerHTML = '<div class="no-friends">Aucun membre</div>';
@@ -221,9 +220,9 @@
             }
             container.innerHTML = data.map(user => `
                 <div class="friend-online">
-                    <span class="friend-avatar">${user.username ? user.username[0].toUpperCase() : '?'}</span>
-                    <span class="friend-name">${user.username || user.email}</span>
-                    <span class="online-dot" style="background:${user.is_online ? '#00e676' : '#888'}"></span>
+                    <span class="friend-avatar">${user.email ? user.email[0].toUpperCase() : '?'}</span>
+                    <span class="friend-name">${user.email}</span>
+                    <span class="online-dot" style="background:#888"></span>
                 </div>
             `).join('');
             const container = document.getElementById('friendsOnline');

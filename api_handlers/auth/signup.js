@@ -35,6 +35,7 @@ module.exports = async function handler(req, res) {
       process.env.SUPABASE_SERVICE_ROLE_KEY
     );
 
+    // Création du compte Supabase Auth
     const { data, error } = await supabase.auth.admin.createUser({
       email: email,
       password: password,
@@ -47,6 +48,16 @@ module.exports = async function handler(req, res) {
     if (error) {
       return res.status(400).json({ error: error.message });
     }
+
+    // Synchronisation dans la table public.users
+    await supabase.from('users').insert([
+      {
+        id: data.user.id,
+        email: data.user.email,
+        username: username,
+        is_online: true
+      }
+    ]);
 
     return res.status(201).json({
       success: true,
