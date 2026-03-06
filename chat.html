@@ -72,15 +72,80 @@
 
         .chat-wrapper {
             background: linear-gradient(135deg, rgba(25, 25, 35, 0.6) 0%, rgba(50, 25, 20, 0.4) 100%);
-            border: 2px solid rgba(156, 44, 23, 0.4);
-            border-radius: 16px;
-            overflow: hidden;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversations</title>
+    <style>
+        .friends-online {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .friend {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: #2ecc40;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 2px solid #fff;
+        }
+        .conversations-list {
             display: flex;
             flex-direction: column;
-            height: 600px;
-            box-shadow: 0 12px 40px rgba(156, 44, 23, 0.2);
-            backdrop-filter: blur(10px);
+            gap: 15px;
         }
+        .conversation {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .conversation .avatar {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="friends-online">
+        <!-- Exemple d'ami connecté -->
+        <div class="friend">
+            <img src="avatar1.jpg" class="avatar" alt="Ami 1">
+            <span class="online-dot"></span>
+        </div>
+        <div class="friend">
+            <img src="avatar2.jpg" class="avatar" alt="Ami 2">
+            <span class="online-dot"></span>
+        </div>
+        <!-- Ajoute d'autres amis connectés ici -->
+    </div>
+    <div class="conversations-list">
+        <div class="conversation">
+            <img src="avatar3.jpg" class="avatar" alt="Membre 1">
+            <span>Membre 1</span>
+        </div>
+        <div class="conversation">
+            <img src="avatar4.jpg" class="avatar" alt="Membre 2">
+            <span>Membre 2</span>
+        </div>
+        <!-- Ajoute d'autres conversations ici -->
+    </div>
+</body>
+</html>
 
         /* Messages Area */
         .chat-messages {
