@@ -115,7 +115,7 @@ const server = http.createServer((req, res) => {
     '/tournois': '/tournois.html',
     '/contact': '/contact.html',
     '/equipe': '/equipe.html',
-    '/compositions': '/compositions.html',
+
     '/roster-europe': '/roster-europe.html',
     '/roster-feminin': '/roster-feminin.html',
     '/roster-masculin': '/roster-masculin.html',
