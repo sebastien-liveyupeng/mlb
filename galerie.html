@@ -726,6 +726,14 @@
             }
 
             function renderPost(post, { prepend = false } = {}) {
+                const card = document.createElement('article');
+                card.className = 'media-card';
+                card.dataset.postId = post.id;
+
+                const header = document.createElement('div');
+                header.className = 'media-header';
+
+                const userWrap = document.createElement('div');
                 userWrap.className = 'media-user';
 
                 const avatar = document.createElement('div');
