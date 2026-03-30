@@ -421,12 +421,16 @@
             .media-body img,
             .media-body video {
                 width: 100%;
+                height: auto;
                 max-height: 520px;
                 min-height: 320px;
                 object-fit: cover;
                 background: #000;
-                aspect-ratio: 16 / 9;
                 border-radius: 10px;
+                clip-path: none !important;
+                shape-outside: none !important;
+                overflow: hidden;
+                display: block;
             }
 
             .media-body img,
