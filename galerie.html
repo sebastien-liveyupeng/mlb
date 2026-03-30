@@ -726,8 +726,6 @@
             }
 
             function renderPost(post, { prepend = false } = {}) {
-                        // Set username only, no admin badge
-                        username.textContent = post.username || post.email || 'Membre';
                 userWrap.className = 'media-user';
 
                 const avatar = document.createElement('div');
@@ -745,14 +743,7 @@
                 meta.className = 'media-meta';
                 const username = document.createElement('div');
                 username.className = 'media-username';
-                // Set username and add admin badge if user is admin
                 username.textContent = post.username || post.email || 'Membre';
-                if (post.is_admin || post.role === 'admin') {
-                    const adminBadge = document.createElement('span');
-                    adminBadge.className = 'admin-badge';
-                    adminBadge.textContent = 'admin';
-                    username.appendChild(adminBadge);
-                }
                 const time = document.createElement('div');
                 time.className = 'media-time';
                 time.textContent = formatDate(post.created_at);
