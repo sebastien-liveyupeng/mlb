@@ -751,7 +751,29 @@
                 meta.className = 'media-meta';
                 const username = document.createElement('div');
                 username.className = 'media-username';
+                // Set username and add admin badge if user is admin
                 username.textContent = post.username || post.email || 'Membre';
+                if (post.is_admin || post.role === 'admin') {
+                    const adminBadge = document.createElement('span');
+                    adminBadge.className = 'admin-badge';
+                    adminBadge.textContent = 'admin';
+                    username.appendChild(adminBadge);
+                }
+                            /* Admin badge style */
+                            .admin-badge {
+                                display: inline-block;
+                                margin-left: 8px;
+                                padding: 2px 8px;
+                                background: linear-gradient(90deg, #ff6b35, #9c2c17);
+                                color: #fff;
+                                border-radius: 8px;
+                                font-size: 0.7em;
+                                font-weight: 700;
+                                letter-spacing: 1px;
+                                vertical-align: middle;
+                                text-transform: uppercase;
+                                box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+                            }
                 const time = document.createElement('div');
                 time.className = 'media-time';
                 time.textContent = formatDate(post.created_at);
