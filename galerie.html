@@ -222,8 +222,10 @@
                 grid-template-columns: repeat(4, 1fr);
                 gap: 1.2rem;
                 max-width: 1800px;
-                margin: 0 auto;
-                width: 98vw;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                justify-items: center;
             }
 
             @media (max-width: 1800px) {
@@ -271,7 +273,7 @@
                 flex-direction: column;
                 gap: 0.8rem;
                 padding-bottom: 1.5rem;
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                /* Suppression du hover général */
                 min-height: 420px;
                 font-size: 1.13rem;
             }
@@ -284,9 +286,18 @@
                 padding-right: 1rem;
             }
 
-            .media-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+
+            /* Hover uniquement sur l'image ou la vidéo */
+            .media-body img:hover,
+            .media-body video:hover {
+                transform: scale(1.04);
+                box-shadow: 0 8px 24px rgba(255, 107, 53, 0.18), 0 2px 8px rgba(0,0,0,0.18);
+                transition: transform 0.2s, box-shadow 0.2s;
+                z-index: 2;
+            }
+            .media-body img,
+            .media-body video {
+                transition: transform 0.2s, box-shadow 0.2s;
             }
 
             .media-card.highlight {
