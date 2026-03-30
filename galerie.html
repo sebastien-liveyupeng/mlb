@@ -726,14 +726,8 @@
             }
 
             function renderPost(post, { prepend = false } = {}) {
-                const card = document.createElement('article');
-                card.className = 'media-card';
-                card.dataset.postId = post.id;
-
-                const header = document.createElement('div');
-                header.className = 'media-header';
-
-                const userWrap = document.createElement('div');
+                        // Set username only, no admin badge
+                        username.textContent = post.username || post.email || 'Membre';
                 userWrap.className = 'media-user';
 
                 const avatar = document.createElement('div');
@@ -759,21 +753,6 @@
                     adminBadge.textContent = 'admin';
                     username.appendChild(adminBadge);
                 }
-                            /* Admin badge style */
-                            .admin-badge {
-                                display: inline-block;
-                                margin-left: 8px;
-                                padding: 2px 8px;
-                                background: linear-gradient(90deg, #ff6b35, #9c2c17);
-                                color: #fff;
-                                border-radius: 8px;
-                                font-size: 0.7em;
-                                font-weight: 700;
-                                letter-spacing: 1px;
-                                vertical-align: middle;
-                                text-transform: uppercase;
-                                box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-                            }
                 const time = document.createElement('div');
                 time.className = 'media-time';
                 time.textContent = formatDate(post.created_at);
