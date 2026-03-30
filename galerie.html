@@ -640,7 +640,7 @@
             <p>Partagez vos gameplays, vos highlights et vos moments forts. Les membres connectés peuvent poster, tout le monde peut voir.</p>
         </section>
 
-        <main class="media-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100vw;">
+        <main class="media-wrapper">
             <section class="upload-card" id="uploadSection">
                 <div class="upload-head">
                     <h2>Publier un média</h2>
@@ -660,16 +660,24 @@
                 <div class="status" id="uploadStatus"></div>
             </section>
 
-            <section class="media-feed" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                <div class="feed-header">
-                    <h2>Derniers posts</h2>
-                    <span id="feedCount"></span>
-                </div>
-                <div class="status" id="feedStatus"></div>
-                <div class="feed-grid" id="feedGrid"></div>
-                <button class="load-more" id="loadMoreBtn">Charger plus</button>
-            </section>
+            <div class="gallery-center">
+                <section class="media-feed">
+                    <div class="feed-header">
+                        <h2>Derniers posts</h2>
+                        <span id="feedCount"></span>
+                    </div>
+                    <div class="status" id="feedStatus"></div>
+                    <div class="feed-grid" id="feedGrid"></div>
+                    <button class="load-more" id="loadMoreBtn">Charger plus</button>
+                </section>
+            </div>
         </main>
+            .gallery-center {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100vw;
+            }
 
         <footer>
             <div class="footer-content">
