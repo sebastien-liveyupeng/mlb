@@ -641,26 +641,26 @@
         </section>
 
         <main class="media-wrapper">
-            <section class="upload-card" id="uploadSection">
-                <div class="upload-head">
-                    <h2>Publier un média</h2>
-                </div>
-                <div class="upload-gate" id="uploadGate">
-                    <span>Connecte-toi pour publier un contenu.</span>
-                    <button type="button" onclick="openLoginModal()">Se connecter</button>
-                </div>
-                <form class="upload-form" id="uploadForm" style="display: none;">
-                    <label for="mediaFile" class="upload-file-label">
-                        <i class='bx bx-image-alt'></i> Médias
-                    </label>
-                    <input type="file" id="mediaFile" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" required>
-                    <textarea id="mediaCaption" maxlength="300" placeholder="Ajoute une description (optionnel)"></textarea>
-                    <button type="submit">Publier</button>
-                </form>
-                <div class="status" id="uploadStatus"></div>
-            </section>
+            <div class="gallery-main">
+                <section class="upload-card" id="uploadSection">
+                    <div class="upload-head">
+                        <h2>Publier un média</h2>
+                    </div>
+                    <div class="upload-gate" id="uploadGate">
+                        <span>Connecte-toi pour publier un contenu.</span>
+                        <button type="button" onclick="openLoginModal()">Se connecter</button>
+                    </div>
+                    <form class="upload-form" id="uploadForm" style="display: none;">
+                        <label for="mediaFile" class="upload-file-label">
+                            <i class='bx bx-image-alt'></i> Médias
+                        </label>
+                        <input type="file" id="mediaFile" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" required>
+                        <textarea id="mediaCaption" maxlength="300" placeholder="Ajoute une description (optionnel)"></textarea>
+                        <button type="submit">Publier</button>
+                    </form>
+                    <div class="status" id="uploadStatus"></div>
+                </section>
 
-            <div class="gallery-center">
                 <section class="media-feed">
                     <div class="feed-header">
                         <h2>Derniers posts</h2>
@@ -672,6 +672,14 @@
                 </section>
             </div>
         </main>
+                        .gallery-main {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 100vw;
+                            max-width: 100vw;
+                            margin: 0 auto;
+                        }
             .gallery-center {
                 display: flex;
                 flex-direction: column;
