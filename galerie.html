@@ -241,8 +241,10 @@
                 display: flex;
                 flex-direction: column;
                 gap: 0.8rem;
-                padding-bottom: 1rem;
+                padding-bottom: 1.5rem;
                 transition: transform 0.2s ease, box-shadow 0.2s ease;
+                min-height: 420px;
+                font-size: 1.13rem;
             }
 
             .media-card .media-header,
@@ -379,10 +381,12 @@
             .media-body img,
             .media-body video {
                 width: 100%;
-                max-height: 360px;
+                max-height: 340px;
+                min-height: 220px;
                 object-fit: cover;
                 background: #000;
                 aspect-ratio: 16 / 9;
+                border-radius: 10px;
             }
 
             .media-body {
