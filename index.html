@@ -312,7 +312,228 @@ Merci à tous ceux qui nous ont soutenu depuis le tout debut et qui continue a l
     </section>
 
 
-   
+
+
+
+    <script>
+    
+
+    const reseauxFeed = document.getElementById('reseaux-feed');
+    const reseauxInput = document.getElementById('reseaux-comment-input');
+    const reseauxBtn = document.getElementById('reseaux-comment-btn');
+
+
+    let currentUser = null;
+    async function getCurrentUser() {
+        const { data: { user } } = await supabase.auth.getUser();
+        currentUser = user;
+        return user;
+    }
+
+
+    async function fetchPosts() {
+        const { data: posts, error } = await supabase
+
+            // === Réseaux & Actualités - Supabase (ADMIN ONLY POST) ===
+            // Prérequis :
+            // 1. Supabase JS importé et initialisé AVANT ce script
+            // 2. L'utilisateur connecté doit avoir le rôle "admin" pour publier
+
+            const reseauxFeed = document.getElementById('reseaux-feed');
+            const reseauxForm = document.querySelector('.reseaux-form');
+            const reseauxPostInput = document.getElementById('reseaux-post-input');
+            const reseauxPostBtn = document.getElementById('reseaux-post-btn');
+
+            let currentUser = null;
+            let currentProfile = null;
+
+            async function getCurrentUserAndProfile() {
+                const { data: { user } } = await supabase.auth.getUser();
+                currentUser = user;
+                if (user) {
+                    // Récupérer le profil (table users)
+                    const { data: profile } = await supabase
+                        .from('users')
+                        .select('*')
+                        .eq('id', user.id)
+                        .single();
+                    currentProfile = profile;
+                } else {
+                    currentProfile = null;
+                }
+                return { user: currentUser, profile: currentProfile };
+            }
+
+            async function fetchPosts() {
+                const { data: posts, error } = await supabase
+                    .from('media_posts')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                if (error) {
+                    reseauxFeed.innerHTML = '<div style="color:#ff6b35">Erreur de chargement des publications.</div>';
+                    return [];
+                }
+                return posts;
+            }
+
+            async function fetchLikes(post_id) {
+                const { data, error } = await supabase
+                    .from('media_likes')
+                    .select('user_id')
+                    .eq('post_id', post_id);
+                return data || [];
+            }
+
+            async function fetchComments(post_id) {
+                const { data, error } = await supabase
+                    .from('media_comments')
+                    .select('*')
+                    .eq('post_id', post_id)
+                    .order('created_at', { ascending: true });
+                return data || [];
+            }
+
+            async function addLike(post_id) {
+                if (!currentUser) return;
+                const { data: existing } = await supabase
+                    .from('media_likes')
+                    .select('*')
+                    .eq('post_id', post_id)
+                    .eq('user_id', currentUser.id);
+                if (existing && existing.length > 0) {
+                    await supabase
+                        .from('media_likes')
+                        .delete()
+                        .eq('post_id', post_id)
+                        .eq('user_id', currentUser.id);
+                } else {
+                    await supabase
+                        .from('media_likes')
+                        .insert({ post_id, user_id: currentUser.id, created_at: new Date().toISOString() });
+                }
+                renderPosts();
+            }
+
+            async function addComment(post_id, content) {
+                if (!currentUser) return;
+                await supabase
+                    .from('media_comments')
+                    .insert({
+                        post_id,
+                        user_id: currentUser.id,
+                        username: currentProfile?.username || 'Utilisateur',
+                        content,
+                        created_at: new Date().toISOString()
+                    });
+                renderPosts();
+            }
+
+            async function addPost(content) {
+                if (!currentUser || !currentProfile) return;
+                // Tag admin
+                await supabase
+                    .from('media_posts')
+                    .insert({
+                        user_id: currentUser.id,
+                        username: currentProfile.username,
+                        email: currentProfile.email,
+                        caption: content,
+                        created_at: new Date().toISOString(),
+                        avatar_url: '',
+                        media_type: 'text',
+                        media_url: '',
+                        // Ajout d'un tag admin
+                        role: 'admin'
+                    });
+                renderPosts();
+            }
+
+            async function renderPosts() {
+                await getCurrentUserAndProfile();
+                // Afficher le formulaire de publication seulement si connecté
+                if (currentUser && currentProfile) {
+                    reseauxForm.style.display = '';
+                } else {
+                    reseauxForm.style.display = 'none';
+                }
+                reseauxFeed.innerHTML = '<div style="color:#aaa">Chargement...</div>';
+                const posts = await fetchPosts();
+                reseauxFeed.innerHTML = '';
+                for (const post of posts) {
+                    const likes = await fetchLikes(post.id);
+                    const liked = currentUser && likes.some(l => l.user_id === currentUser.id);
+                    const comments = await fetchComments(post.id);
+                    // Tag admin si posté par l'utilisateur connecté
+                    const isAdmin = post.user_id === currentUser?.id;
+                    reseauxFeed.innerHTML += `
+                        <div class="reseaux-post">
+                            <div class="reseaux-post-content">
+                                <span style="font-weight:bold; color:#9c2c17;">${post.username || 'Admin'}${isAdmin ? ' <span style=\'background:#9c2c17;color:#fff;padding:2px 8px;border-radius:6px;font-size:0.85em;\'>admin</span>' : ''}</span>
+                                <span style="color:#aaa;font-size:0.9em;"> • ${new Date(post.created_at).toLocaleString('fr-FR')}</span><br>
+                                ${post.caption ? post.caption.replace(/</g, '&lt;').replace(/>/g, '&gt;') : ''}
+                            </div>
+                            <div class="reseaux-post-actions">
+                                <button class="reseaux-like-btn${liked ? ' liked' : ''}" data-post="${post.id}"><i class='bx bx-like'></i> <span>${likes.length}</span></button>
+                            </div>
+                            <div class="reseaux-comments">
+                                ${comments.map(c => `<div style='margin:4px 0;'><b style='color:#9c2c17;'>${c.username || 'Utilisateur'}</b> <span style='color:#aaa;font-size:0.9em;'>${new Date(c.created_at).toLocaleString('fr-FR')}</span><br>${c.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`).join('')}
+                                ${currentUser ? `<div style='margin-top:8px;display:flex;gap:6px;'><input type='text' class='reseaux-comment-input' data-post="${post.id}" placeholder='Commenter...' maxlength='200' style='flex:1;border-radius:6px;border:1px solid #9c2c17;padding:4px 8px;'><button class='reseaux-comment-btn' data-post="${post.id}" style='border-radius:6px;background:#9c2c17;color:#fff;border:none;padding:4px 12px;cursor:pointer;'>Envoyer</button></div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+                // Like listeners
+                document.querySelectorAll('.reseaux-like-btn').forEach(btn => {
+                    btn.onclick = () => addLike(btn.getAttribute('data-post'));
+                });
+                // Comment listeners
+                document.querySelectorAll('.reseaux-comment-btn').forEach(btn => {
+                    btn.onclick = () => {
+                        const postId = btn.getAttribute('data-post');
+                        const input = document.querySelector(`.reseaux-comment-input[data-post="${postId}"]`);
+                        if (input && input.value.trim()) {
+                            addComment(postId, input.value.trim());
+                        }
+                    };
+                });
+            }
+
+            // Publication d'un post (admin seulement)
+            if (reseauxPostBtn) {
+                reseauxPostBtn.onclick = async () => {
+                    await getCurrentUserAndProfile();
+                    if (!currentUser || !currentProfile) return;
+                    if (!reseauxPostInput.value.trim()) return;
+                    await addPost(reseauxPostInput.value.trim());
+                    reseauxPostInput.value = '';
+                };
+            }
+
+            // Initialisation
+            renderPosts();
+            </script>
+                addLike(post_id);
+            };
+        });
+        // Comment listeners
+        document.querySelectorAll('.reseaux-comment-btn').forEach(btn => {
+            btn.onclick = function() {
+                const post_id = btn.getAttribute('data-post');
+                const input = btn.parentElement.querySelector('.reseaux-comment-input');
+                const content = input.value.trim();
+                if (content.length === 0) return;
+                addComment(post_id, content);
+            };
+        });
+    }
+
+    // Désactiver le formulaire global (on ne publie pas de post ici, seulement des commentaires sur chaque post)
+    document.querySelector('.reseaux-form').style.display = 'none';
+
+    // Initialisation
+    renderPosts();
+    </script>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
