@@ -38,11 +38,19 @@ module.exports = async function handler(req, res) {
   const limit = Math.min(parseInt(parsedUrl.query.limit || '10', 10), 50);
   const offset = Math.max(parseInt(parsedUrl.query.offset || '0', 10), 0);
 
-  const { data: posts, error, count } = await supabase
+
+  let query = supabase
     .from('media_posts')
     .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
-    .range(offset, offset + limit - 1);
+    .order('created_at', { ascending: false });
+
+  if (parsedUrl.query.category && parsedUrl.query.category !== 'tout') {
+    query = query.eq('category', parsedUrl.query.category);
+  }
+
+  query = query.range(offset, offset + limit - 1);
+
+  const { data: posts, error, count } = await query;
 
   if (error) {
     return res.status(500).json({ error: 'Failed to fetch feed' });
