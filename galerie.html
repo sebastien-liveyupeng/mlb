@@ -1131,8 +1131,11 @@
             function openLightbox(target) {
                 if (!lightbox || !lightboxContent) return;
 
+                // Remove previous media and caption
                 const existing = lightboxContent.querySelector('img, video');
                 if (existing) existing.remove();
+                const existingCaption = lightboxContent.querySelector('.lightbox-caption');
+                if (existingCaption) existingCaption.remove();
 
                 let mediaEl;
                 if (target.tagName.toLowerCase() === 'video') {
@@ -1150,6 +1153,28 @@
                 }
 
                 lightboxContent.appendChild(mediaEl);
+
+                // Ajoute la description (caption) sous la photo/vidéo
+                // On remonte jusqu'à la media-card pour trouver la caption
+                let card = target.closest('.media-card');
+                if (card) {
+                    const captionEl = card.querySelector('.media-caption');
+                    if (captionEl && captionEl.textContent.trim() !== '') {
+                        const lightboxCaption = document.createElement('div');
+                        lightboxCaption.className = 'lightbox-caption';
+                        lightboxCaption.textContent = captionEl.textContent;
+                        lightboxCaption.style.marginTop = '1.2rem';
+                        lightboxCaption.style.color = '#fff';
+                        lightboxCaption.style.textAlign = 'center';
+                        lightboxCaption.style.fontSize = '1.13rem';
+                        lightboxCaption.style.lineHeight = '1.5';
+                        lightboxCaption.style.maxWidth = '90%';
+                        lightboxCaption.style.marginLeft = 'auto';
+                        lightboxCaption.style.marginRight = 'auto';
+                        lightboxContent.appendChild(lightboxCaption);
+                    }
+                }
+
                 lightbox.classList.add('active');
             }
 
