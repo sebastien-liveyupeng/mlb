@@ -9,1205 +9,1298 @@
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&family=Russo+One&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-            .media-hero {
-                padding: 7rem 2rem 3rem;
-                text-align: center;
-                background: radial-gradient(circle at top, rgba(255, 107, 53, 0.18) 0%, rgba(11, 11, 15, 0.95) 55%, rgba(11, 11, 15, 1) 100%);
-                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            }
+        /* ── HERO ───────────────────────────────────────────── */
+        .media-hero {
+            padding: 7rem 2rem 3rem;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(255,107,53,.18) 0%, rgba(11,11,15,.95) 55%, rgba(11,11,15,1) 100%);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .media-hero h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.7rem;
+            background: linear-gradient(45deg, #9c2c17, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: .8rem;
+        }
+        .media-hero p {
+            color: rgba(255,255,255,.75);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
 
-            .media-hero h1 {
-                font-family: 'Russo One', sans-serif;
-                font-size: 2.7rem;
-                color: #FFFFFF;
-                margin-bottom: 0.8rem;
-                background: linear-gradient(45deg, #9c2c17, #ff6b35);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
+        /* ── WRAPPER ────────────────────────────────────────── */
+        .media-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-            .media-hero p {
-                color: rgba(255, 255, 255, 0.75);
-                max-width: 640px;
-                margin: 0 auto;
-                line-height: 1.6;
-            }
+        /* ── UPLOAD CARD ────────────────────────────────────── */
+        .upload-card {
+            background: rgba(20,20,28,.98);
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(255,107,53,.07), 0 1.5px 8px rgba(0,0,0,.13);
+            padding: 1.7rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            border: 1px solid rgba(255,107,53,.12);
+        }
+        .upload-head h2 {
+            color: #ff6b35;
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        .upload-gate {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: rgba(255,255,255,.04);
+            border-radius: 12px;
+            padding: .8rem 1.2rem;
+            border: 1px dashed #ff6b35;
+            color: #fff;
+        }
+        .upload-gate button {
+            background: #ff6b35;
+            border: none;
+            color: #fff;
+            padding: .6rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .upload-gate button:hover { background: #9c2c17; }
 
-            .media-wrapper {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 2rem;
-                display: flex;
-                flex-direction: column;
-              
-                .media-hero {
-                    padding: 6rem 2rem 2.5rem;
-                    text-align: center;
-                    background: linear-gradient(120deg, #1a1a22 60%, #ff6b35 100%);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-                }
-                .media-hero h1 {
-                    font-family: 'Russo One', sans-serif;
-                    font-size: 2.5rem;
-                    color: #fff;
-                    margin-bottom: 0.7rem;
-                    letter-spacing: 1px;
-                    background: linear-gradient(45deg, #ff6b35, #fff, #9c2c17);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .media-hero p {
-                    color: rgba(255,255,255,0.8);
-                    max-width: 600px;
-                    margin: 0 auto;
-                    line-height: 1.6;
-                }
-                .media-wrapper {
-                    max-width: 1100px;
-                    margin: 0 auto;
-                    padding: 2.5rem 1.5rem 2rem 1.5rem;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 2.5rem;
-                }
-                .gallery-main {
-                    width: 100%;
-                }
-                .upload-card {
-                    background: rgba(20, 20, 28, 0.98);
-                    border-radius: 18px;
-                    box-shadow: 0 4px 32px rgba(255,107,53,0.07), 0 1.5px 8px rgba(0,0,0,0.13);
-                    padding: 1.7rem 2rem 1.5rem 2rem;
-                    margin-bottom: 2rem;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.2rem;
-                }
-                .upload-head h2 {
-                    color: #ff6b35;
-                    font-size: 1.4rem;
-                    margin-bottom: 0.2rem;
-                }
-                .upload-gate {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1rem;
-                    background: rgba(255, 255, 255, 0.04);
-                    border-radius: 12px;
-                    padding: 0.8rem 1.2rem;
-                    border: 1px dashed #ff6b35;
-                    color: #fff;
-                }
-                .upload-gate button {
-                    background: #ff6b35;
-                    border: none;
-                    color: #fff;
-                    padding: 0.6rem 1.2rem;
-                    border-radius: 10px;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: background 0.2s;
-                }
-                .upload-gate button:hover {
-                    background: #9c2c17;
-                }
-                .upload-form {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                }
-                .upload-file-label {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.7rem;
-                    padding: 0.7rem 1.2rem;
-                    border-radius: 12px;
-                    background: rgba(255, 107, 53, 0.18);
-                    border: 1px dashed #ff6b35;
-                    color: #fff;
-                    cursor: pointer;
-                    font-weight: 600;
-                }
-                .upload-form input[type="file"]::file-selector-button {
-                    display: none;
-                }
-                .upload-form textarea {
-                    min-height: 90px;
-                    padding: 0.8rem 1rem;
-                    border-radius: 10px;
-                    background: rgba(255,255,255,0.06);
-                    border: 1px solid rgba(255,255,255,0.10);
-                    color: #fff;
-                    resize: vertical;
-                }
-                .upload-form textarea:focus {
-                    outline: 2px solid #ff6b35;
-                }
-                .upload-form button {
-                    background: linear-gradient(90deg, #ff6b35 60%, #9c2c17 100%);
-                    border: none;
-                    color: #fff;
-                    padding: 0.9rem 1.5rem;
-                    border-radius: 12px;
-                    font-weight: 600;
-                    cursor: pointer;
-                    font-size: 1.1rem;
-                    transition: background 0.2s, transform 0.2s;
-                }
-                .upload-form button:hover {
-                    background: #9c2c17;
-                    transform: translateY(-2px);
-                }
-                .status {
-                    color: #ff6b35;
-                    font-size: 0.98rem;
-                    margin-top: 0.6rem;
-                }
-                .status.error {
-                    color: #ff7b7b;
-                }
-                .status.success {
-                    color: #7bffb4;
-                }
-                .feed-header {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1rem;
-                    color: #fff;
-                    padding: 0 0.2rem;
-                    max-width: 900px;
-                    margin: 0 auto 1.2rem auto;
-                }
-                .feed-header h2 {
-                    font-size: 1.3rem;
-                    color: #ff6b35;
-                }
-                #feedCount {
-                    font-size: 0.95rem;
-                    color: #fff;
-                    background: #ff6b35;
-                    padding: 0.35rem 0.8rem;
-                    border-radius: 999px;
-                }
-                .feed-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                    gap: 2.2rem;
-                    max-width: 1100px;
-                    margin: 0 auto;
-                    width: 100%;
-                    padding: 0 0 2.5rem 0;
-                    box-sizing: border-box;
-                }
-                .media-card {
-                    background: rgba(20, 20, 28, 0.98);
-                    border-radius: 18px;
-                    border: 1.5px solid rgba(255,107,53,0.10);
-                    overflow: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.8rem;
-                    padding-bottom: 1.5rem;
-                    font-size: 1.13rem;
-                    width: 100%;
-                    box-sizing: border-box;
-                    box-shadow: 0 4px 32px rgba(255,107,53,0.07), 0 1.5px 8px rgba(0,0,0,0.13);
-                    transition: box-shadow 0.2s;
-                }
-                .media-card .media-header,
-                .media-card .media-caption,
-                .media-card .media-actions,
-                .media-card .media-comments {
-                    padding-left: 1rem;
-                    padding-right: 1rem;
-                }
-                .media-body img,
-                .media-body video {
-                    width: 100%;
-                    height: 220px;
-                    object-fit: cover;
-                    background: #000;
-                    border-radius: 12px 12px 0 0;
-                    display: block;
-                    margin: 0;
-                    box-shadow: none;
-                    transition: transform 0.2s, box-shadow 0.2s;
-                }
-                .media-body img:hover,
-                .media-body video:hover {
-                    transform: scale(1.04);
-                    box-shadow: 0 8px 24px #ff6b3555, 0 2px 8px #0003;
-                    z-index: 2;
-                }
-                .media-header {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 1rem;
-                    padding: 1rem 1rem 0;
-                }
-                .media-user {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.8rem;
-                }
-                .media-avatar {
-                    width: 44px;
-                    height: 44px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, #ff6b35, #9c2c17);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #fff;
-                    font-weight: 700;
-                    font-size: 1rem;
-                    overflow: hidden;
-                }
-                .media-avatar img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    display: block;
-                }
-                .media-meta {
-                    display: flex;
-                    flex-direction: column;
-                }
-                .media-username {
-                    color: #fff;
-                    font-weight: 600;
-                }
-                .media-time {
-                    font-size: 0.8rem;
-                    color: rgba(255, 255, 255, 0.5);
-                }
-                .media-delete {
-                    background: transparent;
-                    border: none;
-                    color: rgba(255, 255, 255, 0.6);
-                    cursor: pointer;
-                }
-                .media-caption {
-                    color: rgba(255, 255, 255, 0.88);
-                    font-size: 1.01rem;
-                    line-height: 1.5;
-                    margin-top: 0.2rem;
-                    margin-bottom: 0.2rem;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                }
-                .media-actions {
-                    display: flex;
-                    gap: 0.8rem;
-                    align-items: center;
-                    margin-top: 0.5rem;
-                }
-                .media-actions button {
-                    background: rgba(255, 107, 53, 0.13);
-                    border: 1px solid #ff6b35;
-                    color: #fff;
-                    padding: 0.4rem 0.9rem;
-                    border-radius: 999px;
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.4rem;
-                    cursor: pointer;
-                    font-size: 1.05rem;
-                    transition: background 0.2s, border-color 0.2s;
-                }
-                .media-actions button.liked {
-                    background: #ff6b35;
-                    border-color: #ff6b35;
-                    color: #fff;
-                }
-                .media-comments {
-                    display: none;
-                    flex-direction: column;
-                    gap: 0.8rem;
-                    border-top: 1px solid rgba(255, 255, 255, 0.06);
-                    padding-top: 0.8rem;
-                }
-                .media-comments.open {
-                    display: flex;
-                }
-                .comments-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.6rem;
-                }
-                .comment-item {
-                    background: rgba(255, 255, 255, 0.04);
-                    border-radius: 10px;
-                    padding: 0.6rem 0.8rem;
-                    color: rgba(255, 255, 255, 0.85);
-                    font-size: 0.97rem;
-                }
-                .comment-meta {
-                    font-size: 0.75rem;
-                    color: rgba(255, 255, 255, 0.5);
-                    margin-bottom: 0.3rem;
-                }
-                .comment-form {
-                    display: flex;
-                    gap: 0.6rem;
-                }
-                .comment-form input {
-                    flex: 1;
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 10px;
-                    padding: 0.5rem 0.8rem;
-                    color: #fff;
-                }
-                .comment-form input:focus {
-                    outline: 2px solid #ff6b35;
-                    outline-offset: 2px;
-                }
-                .comment-form button {
-                    background: #ff6b35;
-                    border: 1px solid #ff6b35;
-                    color: #fff;
-                    border-radius: 10px;
-                    padding: 0.5rem 1rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                }
-                .load-more {
-                    margin: 0 auto;
-                    background: rgba(255, 255, 255, 0.06);
-                    border: 1px solid #ff6b35;
-                    color: #fff;
-                    padding: 0.6rem 1.2rem;
-                    border-radius: 999px;
-                    cursor: pointer;
-                    font-weight: 600;
-                    transition: background 0.2s, border-color 0.2s;
-                }
-                .load-more:hover {
-                    background: #ff6b35;
-                    border-color: #ff6b35;
-                }
-                @media (max-width: 900px) {
-                    .media-wrapper {
-                        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-                    }
-                    .feed-grid {
-                        grid-template-columns: 1fr;
-                        gap: 1.2rem;
-                    }
-                    .media-card {
-                        border-radius: 12px;
-                    }
-                    .media-body img,
-                    .media-body video {
-                        height: 160px;
-                    }
-                }
-                @media (max-width: 600px) {
-                    .media-hero {
-                        padding: 4rem 0.5rem 1.2rem;
-                    }
-                    .media-wrapper {
-                        padding: 0.5rem 0.1rem 0.5rem 0.1rem;
-                    }
-                    .feed-header {
-                        flex-direction: column;
-                        align-items: flex-start;
-                        gap: 0.5rem;
-                    }
-                    .feed-grid {
-                        grid-template-columns: 1fr;
-                        gap: 0.7rem;
-                    }
-                    .media-card {
-                        border-radius: 8px;
-                    }
-                    .media-body img,
-                    .media-body video {
-                        height: 100px;
-                    }
-                }
-            .load-more:hover {
-                background: rgba(255, 107, 53, 0.18);
-                border-color: rgba(255, 107, 53, 0.5);
-            }
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .upload-file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            padding: .7rem 1.2rem;
+            border-radius: 12px;
+            background: rgba(255,107,53,.18);
+            border: 1px dashed #ff6b35;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .upload-form input[type="file"] { display: none; }
+        .upload-form textarea {
+            min-height: 90px;
+            padding: .8rem 1rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.10);
+            color: #fff;
+            resize: vertical;
+            font-family: inherit;
+        }
+        .upload-form textarea:focus { outline: 2px solid #ff6b35; }
 
-            @media (max-width: 768px) {
-                .media-hero h1 {
-                    font-size: 2rem;
-                }
-                .media-wrapper {
-                    padding: 1.5rem;
-                }
-                .upload-card {
-                    padding: 1.2rem;
-                }
-                .feed-header {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-                .media-actions {
-                    flex-wrap: wrap;
-                    gap: 0.6rem;
-                }
-                .media-body img,
-                .media-body video {
-                    max-height: 260px;
-                }
-                .comment-form {
-                    flex-direction: column;
-                }
-                .comment-form button {
-                    width: 100%;
-                }
-            }
+        /* Sélecteur de catégorie dans le formulaire */
+        .category-select-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .category-select-wrap label {
+            color: rgba(255,255,255,.7);
+            font-size: .9rem;
+            font-weight: 600;
+        }
+        .category-select {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,107,53,.4);
+            border-radius: 10px;
+            color: #fff;
+            padding: .7rem 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff6b35' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        .category-select:focus { outline: 2px solid #ff6b35; }
+        .category-select option { background: #1a1a22; }
 
-            @media (max-width: 480px) {
-                .media-hero {
-                    padding: 6rem 1.2rem 2rem;
-                }
-                .media-wrapper {
-                    padding: 1rem;
-                }
-                .upload-form button,
-                .load-more {
-                    width: 100%;
-                }
-                .media-header {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 0.6rem;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="background">
-            <div class="animated-bg"></div>
-        </div>
+        .upload-form button[type="submit"] {
+            background: linear-gradient(90deg, #ff6b35 60%, #9c2c17 100%);
+            border: none;
+            color: #fff;
+            padding: .9rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background .2s, transform .2s;
+        }
+        .upload-form button[type="submit"]:hover {
+            background: #9c2c17;
+            transform: translateY(-2px);
+        }
 
-        <header>
-            <div class="header-content">
-                <div class="logo-container">
-                    <div class="logo-icon">
-                        <img src="assets/Ges-white.png" alt="Gascom Esport Logo" class="logo-img">
-                    </div>
-                    <div class="logo-text">Gascom Esport</div>
+        /* ── FILTER TABS ────────────────────────────────────── */
+        .filter-tabs {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            flex-wrap: wrap;
+        }
+        .filter-tab {
+            background: rgba(255,255,255,.05);
+            border: 1.5px solid rgba(255,255,255,.12);
+            color: rgba(255,255,255,.7);
+            padding: .5rem 1.3rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            font-size: .95rem;
+            transition: background .2s, border-color .2s, color .2s, transform .15s;
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+        }
+        .filter-tab:hover {
+            background: rgba(255,107,53,.12);
+            border-color: rgba(255,107,53,.4);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        .filter-tab.active {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(255,107,53,.35);
+        }
+        .filter-tab .tab-icon { font-size: 1rem; }
+
+        /* ── FEED HEADER ────────────────────────────────────── */
+        .feed-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .feed-header h2 { color: #ff6b35; font-size: 1.3rem; margin: 0; }
+        #feedCount {
+            font-size: .92rem;
+            color: #fff;
+            background: rgba(255,107,53,.25);
+            border: 1px solid rgba(255,107,53,.4);
+            padding: .3rem .8rem;
+            border-radius: 999px;
+        }
+
+        /* ── FEED GRID ──────────────────────────────────────── */
+        .feed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        /* ── MEDIA CARD ─────────────────────────────────────── */
+        .media-card {
+            background: rgba(20,20,28,.98);
+            border-radius: 18px;
+            border: 1.5px solid rgba(255,107,53,.10);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 32px rgba(255,107,53,.07);
+            transition: box-shadow .25s, transform .25s, border-color .25s;
+            cursor: pointer;
+        }
+        .media-card:hover {
+            box-shadow: 0 8px 40px rgba(255,107,53,.18);
+            transform: translateY(-3px);
+            border-color: rgba(255,107,53,.35);
+        }
+
+        .media-body { position: relative; overflow: hidden; }
+        .media-body img,
+        .media-body video {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform .35s;
+        }
+        .media-card:hover .media-body img,
+        .media-card:hover .media-body video { transform: scale(1.04); }
+
+        /* Catégorie badge sur la card */
+        .card-category-badge {
+            position: absolute;
+            top: .7rem;
+            left: .7rem;
+            padding: .25rem .75rem;
+            border-radius: 999px;
+            font-size: .78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            pointer-events: none;
+        }
+        .badge-tout        { background: rgba(30,30,40,.85); color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.2); }
+        .badge-tips        { background: rgba(53,150,255,.22); color: #64b5ff; border: 1px solid rgba(53,150,255,.4); }
+        .badge-actualites  { background: rgba(255,107,53,.22); color: #ff6b35; border: 1px solid rgba(255,107,53,.4); }
+        .badge-autres      { background: rgba(150,53,255,.22); color: #b58fff; border: 1px solid rgba(150,53,255,.4); }
+
+        .media-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: .9rem 1rem .3rem;
+        }
+        .media-user { display: flex; align-items: center; gap: .75rem; }
+        .media-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #9c2c17);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: .95rem;
+            overflow: hidden; flex-shrink: 0;
+        }
+        .media-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .media-meta { display: flex; flex-direction: column; }
+        .media-username { color: #fff; font-weight: 600; font-size: .97rem; }
+        .media-time { font-size: .78rem; color: rgba(255,255,255,.5); }
+
+        .media-caption {
+            color: rgba(255,255,255,.82);
+            font-size: .97rem;
+            line-height: 1.5;
+            padding: .3rem 1rem .3rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .media-actions {
+            display: flex;
+            gap: .7rem;
+            align-items: center;
+            padding: .5rem 1rem 1rem;
+            border-top: 1px solid rgba(255,255,255,.05);
+            margin-top: auto;
+        }
+        .media-actions button {
+            background: rgba(255,107,53,.10);
+            border: 1px solid rgba(255,107,53,.3);
+            color: rgba(255,255,255,.85);
+            padding: .38rem .85rem;
+            border-radius: 999px;
+            display: inline-flex; align-items: center; gap: .4rem;
+            cursor: pointer; font-size: .97rem;
+            transition: background .2s, border-color .2s;
+        }
+        .media-actions button.liked {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            color: #fff;
+        }
+        .media-actions .open-post-btn {
+            margin-left: auto;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.15);
+            color: rgba(255,255,255,.55);
+            font-size: .85rem;
+            padding: .35rem .75rem;
+        }
+        .media-actions .open-post-btn:hover {
+            background: rgba(255,255,255,.07);
+            border-color: rgba(255,255,255,.3);
+            color: #fff;
+        }
+
+        .status { color: #ff6b35; font-size: .98rem; margin: .3rem 0; }
+        .status.error { color: #ff7b7b; }
+        .status.success { color: #7bffb4; }
+
+        .load-more {
+            display: block;
+            margin: 0 auto;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,107,53,.4);
+            color: #fff;
+            padding: .65rem 1.5rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background .2s, border-color .2s;
+        }
+        .load-more:hover { background: #ff6b35; border-color: #ff6b35; }
+
+        /* ── POST DETAIL OVERLAY ────────────────────────────── */
+        .post-detail-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            background: rgba(5,5,10,.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            align-items: flex-start;
+            justify-content: center;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+        }
+        .post-detail-overlay.active { display: flex; }
+
+        .post-detail-panel {
+            background: rgba(18,18,26,.99);
+            border: 1px solid rgba(255,107,53,.18);
+            border-radius: 22px;
+            max-width: 820px;
+            width: 100%;
+            box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,107,53,.08);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: panelIn .3s ease;
+        }
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(24px) scale(.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .post-detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+        .post-detail-user { display: flex; align-items: center; gap: .85rem; }
+        .post-detail-avatar {
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b35, #9c2c17);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 700; font-size: 1rem;
+            overflow: hidden;
+        }
+        .post-detail-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .post-detail-username { color: #fff; font-weight: 700; font-size: 1.05rem; }
+        .post-detail-time { font-size: .8rem; color: rgba(255,255,255,.5); margin-top: .15rem; }
+        .post-detail-close {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            color: #fff;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.3rem;
+            transition: background .2s;
+        }
+        .post-detail-close:hover { background: rgba(255,107,53,.3); border-color: #ff6b35; }
+
+        .post-detail-media {
+            background: #000;
+            display: flex; align-items: center; justify-content: center;
+            max-height: 520px;
+            overflow: hidden;
+        }
+        .post-detail-media img {
+            max-width: 100%; max-height: 520px;
+            object-fit: contain;
+            display: block;
+        }
+        .post-detail-media video {
+            max-width: 100%; max-height: 520px;
+            display: block;
+        }
+
+        .post-detail-body { padding: 1.2rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+
+        .post-detail-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .28rem .9rem;
+            border-radius: 999px;
+            font-size: .82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            width: fit-content;
+        }
+
+        .post-detail-caption {
+            color: rgba(255,255,255,.88);
+            font-size: 1.05rem;
+            line-height: 1.65;
+        }
+
+        .post-detail-actions {
+            display: flex;
+            gap: .75rem;
+            align-items: center;
+            padding-bottom: .5rem;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+        }
+        .post-detail-actions button {
+            background: rgba(255,107,53,.10);
+            border: 1px solid rgba(255,107,53,.3);
+            color: #fff;
+            padding: .45rem 1rem;
+            border-radius: 999px;
+            display: inline-flex; align-items: center; gap: .45rem;
+            cursor: pointer; font-size: 1rem;
+            transition: background .2s;
+        }
+        .post-detail-actions button.liked {
+            background: #ff6b35;
+            border-color: #ff6b35;
+        }
+
+        /* Comments */
+        .post-detail-comments { display: flex; flex-direction: column; gap: 1rem; }
+        .post-detail-comments h3 {
+            color: rgba(255,255,255,.9);
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .comments-list-detail {
+            display: flex;
+            flex-direction: column;
+            gap: .65rem;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: .3rem;
+        }
+        .comments-list-detail::-webkit-scrollbar { width: 4px; }
+        .comments-list-detail::-webkit-scrollbar-track { background: transparent; }
+        .comments-list-detail::-webkit-scrollbar-thumb { background: rgba(255,107,53,.4); border-radius: 4px; }
+        .comment-item {
+            background: rgba(255,255,255,.04);
+            border-radius: 10px;
+            padding: .65rem .9rem;
+            color: rgba(255,255,255,.85);
+            font-size: .96rem;
+            line-height: 1.5;
+        }
+        .comment-meta {
+            font-size: .76rem;
+            color: rgba(255,255,255,.45);
+            margin-bottom: .3rem;
+            display: flex; gap: .5rem;
+        }
+        .comment-meta strong { color: rgba(255,255,255,.7); }
+        .comment-form-detail {
+            display: flex;
+            gap: .6rem;
+        }
+        .comment-form-detail input {
+            flex: 1;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 10px;
+            padding: .55rem .9rem;
+            color: #fff;
+            font-family: inherit;
+        }
+        .comment-form-detail input:focus { outline: 2px solid #ff6b35; outline-offset: 2px; }
+        .comment-form-detail button {
+            background: #ff6b35;
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            padding: .55rem 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .comment-form-detail button:hover { background: #9c2c17; }
+
+        /* empty state */
+        .empty-state {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 3rem 1rem;
+            color: rgba(255,255,255,.4);
+        }
+        .empty-state i { font-size: 3rem; display: block; margin-bottom: .8rem; color: rgba(255,107,53,.4); }
+
+        /* ── RESPONSIVE ──────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .media-hero h1 { font-size: 2rem; }
+            .media-wrapper { padding: 1.5rem; }
+            .upload-card { padding: 1.2rem; }
+            .feed-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .media-body img, .media-body video { height: 200px; }
+            .post-detail-panel { border-radius: 16px; }
+            .post-detail-media img, .post-detail-media video { max-height: 300px; }
+        }
+        @media (max-width: 480px) {
+            .media-hero { padding: 6rem 1.2rem 2rem; }
+            .media-wrapper { padding: 1rem; }
+            .filter-tabs { gap: .4rem; }
+            .filter-tab { font-size: .85rem; padding: .42rem 1rem; }
+            .post-detail-overlay { padding: .5rem; }
+            .comment-form-detail { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="animated-bg"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="assets/Ges-white.png" alt="Gascom Esport Logo" class="logo-img">
                 </div>
-                <nav>
-                    <button class="hamburger" id="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <div class="username-display-mobile" id="usernameDisplayMobile" style="display: none;">
-                        <span id="usernameMobileNav"></span>
-                        <button onclick="handleLogout()" class="logout-mobile-btn" title="Déconnexion">
-                            <i class='bx bx-log-out'></i>
-                        </button>
-                    </div>
-                    <ul class="nav-menu" id="navMenu">
-                        <li class="nav-item"><a href="/">Accueil</a></li>
-                        <li class="nav-item"><a href="/equipe">Équipe</a></li>
-
-                        <li class="nav-item"><a href="/tournois">Tournois</a></li>
-                        <li class="nav-item"><a href="/galerie" class="active">Nouveautés</a></li>
-                        <li class="nav-item"><a href="/contact">Contact</a></li>
-                        <li class="nav-item"><a href="/apropos">A propos</a></li>
-                        <li class="nav-item"><a href="/profils">Profils</a></li>
-                        <li class="nav-item"><a href="/chat"><i class='bx bx-message'></i> Chat</a></li>
-                        <li class="nav-item auth-nav" id="authNav">
-                            <button class="auth-btn" onclick="openLoginModal()">Connexion</button>
-                            <button class="auth-btn" onclick="openSignupModal()">Inscription</button>
-                        </li>
-                        <li class="nav-item user-nav" id="userNav" style="display: none;">
-                            <span class="username-display" id="usernameNav"></span>
-                            <a class="logout-btn" href="/mon-profil" title="Mon Profil" style="background: transparent; border: none; color: #FFFFFF; cursor: pointer; padding: 0.5rem; font-size: 1.2rem; text-decoration: none;">
-                                <i class='bx bx-user-circle'></i>
-                            </a>
-                            <button class="logout-btn" onclick="handleLogout()">Déconnexion</button>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="logo-text">Gascom Esport</div>
             </div>
-        </header>
+            <nav>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="username-display-mobile" id="usernameDisplayMobile" style="display:none;">
+                    <span id="usernameMobileNav"></span>
+                    <button onclick="handleLogout()" class="logout-mobile-btn" title="Déconnexion">
+                        <i class='bx bx-log-out'></i>
+                    </button>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item"><a href="/">Accueil</a></li>
+                    <li class="nav-item"><a href="/equipe">Équipe</a></li>
+                    <li class="nav-item"><a href="/tournois">Tournois</a></li>
+                    <li class="nav-item"><a href="/galerie" class="active">Nouveautés</a></li>
+                    <li class="nav-item"><a href="/contact">Contact</a></li>
+                    <li class="nav-item"><a href="/apropos">A propos</a></li>
+                    <li class="nav-item"><a href="/profils">Profils</a></li>
+                    <li class="nav-item"><a href="/chat"><i class='bx bx-message'></i> Chat</a></li>
+                    <li class="nav-item auth-nav" id="authNav">
+                        <button class="auth-btn" onclick="openLoginModal()">Connexion</button>
+                        <button class="auth-btn" onclick="openSignupModal()">Inscription</button>
+                    </li>
+                    <li class="nav-item user-nav" id="userNav" style="display:none;">
+                        <span class="username-display" id="usernameNav"></span>
+                        <a class="logout-btn" href="/mon-profil" title="Mon Profil" style="background:transparent;border:none;color:#fff;cursor:pointer;padding:.5rem;font-size:1.2rem;text-decoration:none;">
+                            <i class='bx bx-user-circle'></i>
+                        </a>
+                        <button class="logout-btn" onclick="handleLogout()">Déconnexion</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <section class="media-hero">
-            <h1>Medias Gascom</h1>
-            <p>Partagez vos gameplays, vos highlights et vos moments forts. Les membres connectés peuvent poster, tout le monde peut voir.</p>
+    <section class="media-hero">
+        <h1>Medias Gascom</h1>
+        <p>Partagez vos gameplays, vos highlights et vos moments forts. Les membres connectés peuvent poster, tout le monde peut voir.</p>
+    </section>
+
+    <main class="media-wrapper">
+
+        <!-- ── UPLOAD ── -->
+        <section class="upload-card" id="uploadSection">
+            <div class="upload-head">
+                <h2>Publier un média</h2>
+            </div>
+            <div class="upload-gate" id="uploadGate">
+                <span>Connecte-toi pour publier un contenu.</span>
+                <button type="button" onclick="openLoginModal()">Se connecter</button>
+            </div>
+            <form class="upload-form" id="uploadForm" style="display:none;">
+                <label for="mediaFile" class="upload-file-label">
+                    <i class='bx bx-image-alt'></i> Sélectionner un fichier
+                </label>
+                <input type="file" id="mediaFile" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" required>
+                <textarea id="mediaCaption" maxlength="300" placeholder="Ajoute une description (optionnel)"></textarea>
+                <div class="category-select-wrap">
+                    <label for="mediaCategory">Catégorie</label>
+                    <select id="mediaCategory" class="category-select">
+                        <option value="actualites">📢 Actualités</option>
+                        <option value="tips">💡 Tips</option>
+                        <option value="autres">🎮 Autres</option>
+                    </select>
+                </div>
+                <button type="submit">Publier</button>
+            </form>
+            <div class="status" id="uploadStatus"></div>
         </section>
 
-        <main class="media-wrapper">
-            <div class="gallery-main">
-                <section class="upload-card" id="uploadSection">
-                    <div class="upload-head">
-                        <h2>Publier un média</h2>
-                    </div>
-                    <div class="upload-gate" id="uploadGate">
-                        <span>Connecte-toi pour publier un contenu.</span>
-                        <button type="button" onclick="openLoginModal()">Se connecter</button>
-                    </div>
-                    <form class="upload-form" id="uploadForm" style="display: none;">
-                        <label for="mediaFile" class="upload-file-label">
-                            <i class='bx bx-image-alt'></i> Médias
-                        </label>
-                        <input type="file" id="mediaFile" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime" required>
-                        <textarea id="mediaCaption" maxlength="300" placeholder="Ajoute une description (optionnel)"></textarea>
-                        <button type="submit">Publier</button>
-                    </form>
-                    <div class="status" id="uploadStatus"></div>
-                </section>
-
-                <section class="media-feed">
-                    <div class="feed-header">
-                        <h2>Derniers posts</h2>
-                        <span id="feedCount"></span>
-                    </div>
-                    <div class="status" id="feedStatus"></div>
-                    <div class="feed-grid" id="feedGrid"></div>
-                    <button class="load-more" id="loadMoreBtn">Charger plus</button>
-                </section>
+        <!-- ── FEED ── -->
+        <section class="media-feed">
+            <div class="feed-header">
+                <h2>Derniers posts</h2>
+                <span id="feedCount"></span>
             </div>
-        </main>
-                      
 
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">Gascom Esport</div>
-                <p>&copy; 2024 Gascom Esport. Tous droits réservés.</p>
+            <!-- Onglets filtres -->
+            <div class="filter-tabs" id="filterTabs" style="margin-bottom:1.4rem;">
+                <button class="filter-tab active" data-cat="tout">
+                    <i class='bx bx-grid-alt tab-icon'></i> Tout
+                </button>
+                <button class="filter-tab" data-cat="tips">
+                    <i class='bx bx-bulb tab-icon'></i> Tips
+                </button>
+                <button class="filter-tab" data-cat="actualites">
+                    <i class='bx bx-news tab-icon'></i> Actualités
+                </button>
+                <button class="filter-tab" data-cat="autres">
+                    <i class='bx bx-joystick tab-icon'></i> Autres
+                </button>
             </div>
-        </footer>
 
-     
+            <div class="status" id="feedStatus"></div>
+            <div class="feed-grid" id="feedGrid"></div>
+            <button class="load-more" id="loadMoreBtn" style="display:none;">Charger plus</button>
+        </section>
+    </main>
 
-        <script src="auth-session.js"></script>
-        <script>
-            const PAGE_SIZE = 10;
-            const MAX_IMAGE_SIZE = 1024 * 1024 * 1024; // 1 Go
-            const MAX_VIDEO_SIZE = 2 * 1024 * 1024 * 1024; // 2 Go
-            const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-            const ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/webm', 'video/quicktime'];
+    <!-- ── POST DETAIL OVERLAY ── -->
+    <div class="post-detail-overlay" id="postDetailOverlay">
+        <div class="post-detail-panel" id="postDetailPanel">
 
-            const uploadForm = document.getElementById('uploadForm');
-            const uploadGate = document.getElementById('uploadGate');
-            const uploadStatus = document.getElementById('uploadStatus');
-            const feedGrid = document.getElementById('feedGrid');
-            const feedStatus = document.getElementById('feedStatus');
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            const feedCount = document.getElementById('feedCount');
+            <div class="post-detail-header">
+                <div class="post-detail-user">
+                    <div class="post-detail-avatar" id="pdAvatar"></div>
+                    <div>
+                        <div class="post-detail-username" id="pdUsername"></div>
+                        <div class="post-detail-time" id="pdTime"></div>
+                    </div>
+                </div>
+                <button class="post-detail-close" id="postDetailClose">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
 
-            let currentUser = null;
-            let token = null;
-            let offset = 0;
-            let loading = false;
-            let hasMore = true;
+            <div class="post-detail-media" id="pdMedia"></div>
 
-            function setStatus(element, message, type) {
-                if (!element) return;
-                element.textContent = message || '';
-                element.classList.remove('error', 'success');
-                if (type) element.classList.add(type);
-            }
+            <div class="post-detail-body">
+                <div id="pdBadge" class="post-detail-badge"></div>
+                <div class="post-detail-caption" id="pdCaption"></div>
 
-            function formatDate(value) {
-                if (!value) return '';
-                return new Date(value).toLocaleString('fr-FR');
-            }
+                <div class="post-detail-actions">
+                    <button id="pdLikeBtn" data-action="like">
+                        <i class='bx bxs-heart'></i>
+                        <span id="pdLikeCount">0</span>
+                    </button>
+                    <button id="pdDeleteBtn" style="display:none; background:rgba(255,80,80,.12); border-color:rgba(255,80,80,.4);">
+                        <i class='bx bx-trash'></i> Supprimer
+                    </button>
+                </div>
 
-            function getAvatarInitial(name) {
-                return (name || 'M')[0].toUpperCase();
-            }
-
-            async function loadCurrentUser() {
-                token = getStoredToken();
-                if (!token) return;
-
-                try {
-                    const response = await fetch('/api/auth/session', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    });
-                    const data = await response.json();
-                    if (response.ok && data.user) {
-                        currentUser = data.user;
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            function updateUploadVisibility() {
-                if (token && currentUser) {
-                    uploadGate.style.display = 'none';
-                    uploadForm.style.display = 'grid';
-                } else {
-                    uploadGate.style.display = 'flex';
-                    uploadForm.style.display = 'none';
-                }
-            }
-
-            function createMediaElement(post) {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'media-body';
-                if (post.media_type === 'video') {
-                    const video = document.createElement('video');
-                    video.controls = true;
-                    video.preload = 'metadata';
-                    video.src = post.media_url;
-                    wrapper.appendChild(video);
-                } else {
-                    const img = document.createElement('img');
-                    img.src = post.media_url;
-                    img.alt = post.caption || 'Media';
-                    wrapper.appendChild(img);
-                }
-                return wrapper;
-            }
-
-            function renderPost(post, { prepend = false } = {}) {
-                const card = document.createElement('article');
-                card.className = 'media-card';
-                card.dataset.postId = post.id;
-
-                const header = document.createElement('div');
-                header.className = 'media-header';
-
-                const userWrap = document.createElement('div');
-                userWrap.className = 'media-user';
-
-                const avatar = document.createElement('div');
-                avatar.className = 'media-avatar';
-                if (post.avatar_url) {
-                    const avatarImg = document.createElement('img');
-                    avatarImg.src = post.avatar_url;
-                    avatarImg.alt = post.username || post.email || 'Avatar';
-                    avatar.appendChild(avatarImg);
-                } else {
-                    avatar.textContent = getAvatarInitial(post.username || post.email);
-                }
-
-                const meta = document.createElement('div');
-                meta.className = 'media-meta';
-                const username = document.createElement('div');
-                username.className = 'media-username';
-                username.textContent = post.username || post.email || 'Membre';
-                const time = document.createElement('div');
-                time.className = 'media-time';
-                time.textContent = formatDate(post.created_at);
-                meta.appendChild(username);
-                meta.appendChild(time);
-
-                userWrap.appendChild(avatar);
-                userWrap.appendChild(meta);
-                header.appendChild(userWrap);
-
-                if (currentUser && post.user_id === currentUser.id) {
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.className = 'media-delete';
-                    deleteBtn.dataset.action = 'delete';
-                    deleteBtn.innerHTML = "<i class='bx bx-trash'></i>";
-                    header.appendChild(deleteBtn);
-                }
-
-                card.appendChild(header);
-                card.appendChild(createMediaElement(post));
-
-                if (post.caption) {
-                    const caption = document.createElement('div');
-                    caption.className = 'media-caption';
-                    caption.textContent = post.caption;
-                    card.appendChild(caption);
-                }
-
-                const actions = document.createElement('div');
-                actions.className = 'media-actions';
-
-                const likeBtn = document.createElement('button');
-                likeBtn.dataset.action = 'like';
-                likeBtn.className = post.liked_by_me ? 'liked' : '';
-                likeBtn.innerHTML = `<i class='bx bxs-heart'></i> <span class="like-count">${post.like_count || 0}</span>`;
-
-                const commentBtn = document.createElement('button');
-                commentBtn.dataset.action = 'toggle-comments';
-                commentBtn.innerHTML = `<i class='bx bx-message'></i> <span class="comment-count">${post.comment_count || 0}</span>`;
-
-                actions.appendChild(likeBtn);
-                actions.appendChild(commentBtn);
-                card.appendChild(actions);
-
-                const commentsSection = document.createElement('div');
-                commentsSection.className = 'media-comments';
-
-                const commentsList = document.createElement('div');
-                commentsList.className = 'comments-list';
-                commentsSection.appendChild(commentsList);
-
-                const commentsStatus = document.createElement('div');
-                commentsStatus.className = 'status';
-                commentsSection.appendChild(commentsStatus);
-
-                if (token) {
-                    const commentForm = document.createElement('form');
-                    commentForm.className = 'comment-form';
-                    commentForm.innerHTML = `
-                        <input type="text" maxlength="500" placeholder="Écrire un commentaire...">
+                <div class="post-detail-comments">
+                    <h3><i class='bx bx-message-rounded-dots'></i> Commentaires (<span id="pdCommentCount">0</span>)</h3>
+                    <div class="comments-list-detail" id="pdCommentsList"></div>
+                    <div class="status" id="pdCommentsStatus"></div>
+                    <form class="comment-form-detail" id="pdCommentForm" style="display:none;">
+                        <input type="text" id="pdCommentInput" maxlength="500" placeholder="Écrire un commentaire...">
                         <button type="submit">Envoyer</button>
-                    `;
-                    commentsSection.appendChild(commentForm);
-                }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                card.appendChild(commentsSection);
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Gascom Esport</div>
+            <p>&copy; 2024 Gascom Esport. Tous droits réservés.</p>
+        </div>
+    </footer>
 
-                if (prepend) {
-                    feedGrid.prepend(card);
-                } else {
-                    feedGrid.appendChild(card);
-                }
-            }
+    <script src="auth-session.js"></script>
+    <script>
+    /* ─────────────────────────────────────────────────────────
+       CONSTANTS & STATE
+    ───────────────────────────────────────────────────────── */
+    const PAGE_SIZE = 12;
+    const MAX_IMAGE_SIZE = 1024 * 1024 * 1024;
+    const MAX_VIDEO_SIZE = 2 * 1024 * 1024 * 1024;
+    const ALLOWED_IMAGE_TYPES = ['image/jpeg','image/png','image/webp','image/gif'];
+    const ALLOWED_VIDEO_TYPES = ['video/mp4','video/webm','video/quicktime'];
 
-            function highlightPost(card) {
-                if (!card) return;
-                card.classList.add('highlight');
-                setTimeout(() => card.classList.remove('highlight'), 2200);
-            }
+    const CATEGORY_META = {
+        tout:       { label: 'Tout',        icon: '🌐', badgeClass: 'badge-tout'       },
+        tips:       { label: 'Tips',        icon: '💡', badgeClass: 'badge-tips'       },
+        actualites: { label: 'Actualités',  icon: '📢', badgeClass: 'badge-actualites' },
+        autres:     { label: 'Autres',      icon: '🎮', badgeClass: 'badge-autres'     },
+    };
 
-            function scrollToPost(postId) {
-                if (!postId || !feedGrid) return false;
-                const card = feedGrid.querySelector(`.media-card[data-post-id="${postId}"]`);
-                if (!card) return false;
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                highlightPost(card);
-                const comments = card.querySelector('.media-comments');
-                if (comments) {
-                    comments.classList.add('open');
-                    if (card.dataset.commentsLoaded !== 'true') {
-                        loadComments(card);
-                    }
-                }
-                return true;
-            }
+    let currentUser = null;
+    let token       = null;
+    let offset      = 0;
+    let loading     = false;
+    let hasMore     = true;
+    let activeFilter = 'tout';
+    let detailPostId = null;
 
-            async function ensurePostVisible(postId) {
-                if (!postId) return;
-                let attempts = 0;
-                while (attempts < 6) {
-                    if (scrollToPost(postId)) return;
-                    if (!hasMore) return;
-                    await loadFeed();
-                    attempts += 1;
-                }
-            }
+    /* DOM refs */
+    const uploadForm    = document.getElementById('uploadForm');
+    const uploadGate    = document.getElementById('uploadGate');
+    const uploadStatus  = document.getElementById('uploadStatus');
+    const feedGrid      = document.getElementById('feedGrid');
+    const feedStatus    = document.getElementById('feedStatus');
+    const loadMoreBtn   = document.getElementById('loadMoreBtn');
+    const feedCount     = document.getElementById('feedCount');
+    const filterTabs    = document.getElementById('filterTabs');
 
-            async function loadFeed(reset = false) {
-                if (loading || (!hasMore && !reset)) return;
-                loading = true;
-                setStatus(feedStatus, 'Chargement...', '');
+    const overlay       = document.getElementById('postDetailOverlay');
+    const pdAvatar      = document.getElementById('pdAvatar');
+    const pdUsername    = document.getElementById('pdUsername');
+    const pdTime        = document.getElementById('pdTime');
+    const pdMedia       = document.getElementById('pdMedia');
+    const pdBadge       = document.getElementById('pdBadge');
+    const pdCaption     = document.getElementById('pdCaption');
+    const pdLikeBtn     = document.getElementById('pdLikeBtn');
+    const pdLikeCount   = document.getElementById('pdLikeCount');
+    const pdDeleteBtn   = document.getElementById('pdDeleteBtn');
+    const pdCommentsList = document.getElementById('pdCommentsList');
+    const pdCommentsStatus = document.getElementById('pdCommentsStatus');
+    const pdCommentForm  = document.getElementById('pdCommentForm');
+    const pdCommentInput = document.getElementById('pdCommentInput');
+    const pdCommentCount = document.getElementById('pdCommentCount');
+    const postDetailClose = document.getElementById('postDetailClose');
 
-                if (reset) {
-                    offset = 0;
-                    hasMore = true;
-                    feedGrid.innerHTML = '';
-                }
+    /* ─────────────────────────────────────────────────────────
+       UTILS
+    ───────────────────────────────────────────────────────── */
+    function setStatus(el, msg, type) {
+        if (!el) return;
+        el.textContent = msg || '';
+        el.className = 'status' + (type ? ' ' + type : '');
+    }
 
-                try {
-                    const response = await fetch(`/api/media/feed?limit=${PAGE_SIZE}&offset=${offset}`, {
-                        headers: token ? { Authorization: `Bearer ${token}` } : {}
-                    });
-                    const data = await response.json();
+    function formatDate(v) {
+        if (!v) return '';
+        return new Date(v).toLocaleString('fr-FR');
+    }
 
-                    if (!response.ok) {
-                        setStatus(feedStatus, data.error || 'Impossible de charger le feed.', 'error');
-                        return;
-                    }
+    function getInitial(name) { return (name || 'M')[0].toUpperCase(); }
 
-                    const posts = data.posts || [];
-                    if (posts.length === 0 && offset === 0) {
-                        setStatus(feedStatus, 'Aucun post pour le moment.', '');
-                        loadMoreBtn.style.display = 'none';
-                        return;
-                    }
+    function buildAvatar(container, post) {
+        container.innerHTML = '';
+        if (post.avatar_url) {
+            const img = document.createElement('img');
+            img.src = post.avatar_url;
+            img.alt = post.username || 'Avatar';
+            container.appendChild(img);
+        } else {
+            container.textContent = getInitial(post.username || post.email);
+        }
+    }
 
-                    setStatus(feedStatus, '', '');
-                    posts.forEach(post => renderPost(post));
+    function getCategoryBadgeHTML(cat) {
+        const meta = CATEGORY_META[cat] || CATEGORY_META.autres;
+        return `<span class="card-category-badge ${meta.badgeClass}">${meta.icon} ${meta.label}</span>`;
+    }
 
-                    offset += posts.length;
-                    hasMore = data.hasMore;
-                    loadMoreBtn.style.display = hasMore ? 'block' : 'none';
-                    feedCount.textContent = `${offset} posts`;
-                } catch (error) {
-                    console.error(error);
-                    setStatus(feedStatus, 'Erreur lors du chargement.', 'error');
-                } finally {
-                    loading = false;
-                }
-            }
+    /* ─────────────────────────────────────────────────────────
+       AUTH / USER
+    ───────────────────────────────────────────────────────── */
+    async function loadCurrentUser() {
+        token = getStoredToken();
+        if (!token) return;
+        try {
+            const r = await fetch('/api/auth/session', { headers: { Authorization: `Bearer ${token}` } });
+            const d = await r.json();
+            if (r.ok && d.user) currentUser = d.user;
+        } catch (e) { console.error(e); }
+    }
 
-            async function uploadMedia(event) {
-                event.preventDefault();
+    function updateUploadVisibility() {
+        if (token && currentUser) {
+            uploadGate.style.display = 'none';
+            uploadForm.style.display = 'flex';
+        } else {
+            uploadGate.style.display = 'flex';
+            uploadForm.style.display = 'none';
+        }
+    }
 
-                if (!token) {
-                    openLoginModal();
-                    return;
-                }
+    /* ─────────────────────────────────────────────────────────
+       RENDER CARD
+    ───────────────────────────────────────────────────────── */
+    function renderPost(post, { prepend = false } = {}) {
+        const card = document.createElement('article');
+        card.className = 'media-card';
+        card.dataset.postId  = post.id;
+        card.dataset.postCat = post.category || 'autres';
 
-                const fileInput = document.getElementById('mediaFile');
-                const captionInput = document.getElementById('mediaCaption');
-                const file = fileInput.files[0];
+        /* Media */
+        const body = document.createElement('div');
+        body.className = 'media-body';
+        if (post.media_type === 'video') {
+            const v = document.createElement('video');
+            v.preload = 'metadata'; v.src = post.media_url;
+            body.appendChild(v);
+        } else {
+            const i = document.createElement('img');
+            i.src = post.media_url; i.alt = post.caption || 'Media';
+            body.appendChild(i);
+        }
+        body.insertAdjacentHTML('beforeend', getCategoryBadgeHTML(post.category || 'autres'));
+        card.appendChild(body);
 
-                if (!file) {
-                    setStatus(uploadStatus, 'Choisis un fichier.', 'error');
-                    return;
-                }
+        /* Header */
+        const header = document.createElement('div');
+        header.className = 'media-header';
+        const userWrap = document.createElement('div');
+        userWrap.className = 'media-user';
+        const avatar = document.createElement('div');
+        avatar.className = 'media-avatar';
+        buildAvatar(avatar, post);
+        const meta = document.createElement('div');
+        meta.className = 'media-meta';
+        meta.innerHTML = `<div class="media-username">${post.username || post.email || 'Membre'}</div>
+                          <div class="media-time">${formatDate(post.created_at)}</div>`;
+        userWrap.appendChild(avatar);
+        userWrap.appendChild(meta);
+        header.appendChild(userWrap);
+        card.appendChild(header);
 
-                const isImage = ALLOWED_IMAGE_TYPES.includes(file.type);
-                const isVideo = ALLOWED_VIDEO_TYPES.includes(file.type);
+        /* Caption */
+        if (post.caption) {
+            const cap = document.createElement('div');
+            cap.className = 'media-caption';
+            cap.textContent = post.caption;
+            card.appendChild(cap);
+        }
 
-                if (!isImage && !isVideo) {
-                    setStatus(uploadStatus, 'Format non supporté.', 'error');
-                    return;
-                }
+        /* Actions */
+        const actions = document.createElement('div');
+        actions.className = 'media-actions';
+        const likeBtn = document.createElement('button');
+        likeBtn.dataset.action = 'like';
+        likeBtn.className = post.liked_by_me ? 'liked' : '';
+        likeBtn.innerHTML = `<i class='bx bxs-heart'></i><span class="like-count">${post.like_count || 0}</span>`;
+        const commentBtn = document.createElement('button');
+        commentBtn.dataset.action = 'open-detail';
+        commentBtn.innerHTML = `<i class='bx bx-message'></i><span class="comment-count">${post.comment_count || 0}</span>`;
+        const openBtn = document.createElement('button');
+        openBtn.className = 'open-post-btn';
+        openBtn.dataset.action = 'open-detail';
+        openBtn.innerHTML = `Voir le post <i class='bx bx-chevron-right'></i>`;
+        actions.appendChild(likeBtn);
+        actions.appendChild(commentBtn);
+        actions.appendChild(openBtn);
+        card.appendChild(actions);
 
-                if (isImage && file.size > MAX_IMAGE_SIZE) {
-                    setStatus(uploadStatus, 'Image trop lourde (max 1 Go).', 'error');
-                    return;
-                }
-                if (isVideo && file.size > MAX_VIDEO_SIZE) {
-                    setStatus(uploadStatus, 'Vidéo trop lourde (max 1 Go).', 'error');
-                    return;
-                }
-                setStatus(uploadStatus, 'Upload en cours...', '');
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('caption', captionInput.value || '');
-                try {
-                    const response = await fetch('/api/upload', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    });
-                    const data = await response.json();
-                    if (!response.ok) {
-                        setStatus(uploadStatus, data.error || 'Upload échoué.', 'error');
-                        return;
-                    }
-                    setStatus(uploadStatus, 'Publié !', 'success');
-                    fileInput.value = '';
-                    captionInput.value = '';
-                    // Ajoute le média à la galerie
-                    renderPost({
-                        media_type: isVideo ? 'video' : 'image',
-                        media_url: data.fileUrl,
-                        caption: captionInput.value,
-                        created_at: new Date().toISOString(),
-                        username: currentUser ? currentUser.username : 'Membre'
-                    }, { prepend: true });
-                    offset += 1;
-                } catch (error) {
-                    console.error(error);
-                    setStatus(uploadStatus, 'Erreur lors de l\'upload.', 'error');
-                }
-            }
+        /* Store full post data on card for detail panel */
+        card._postData = post;
 
-            async function loadComments(card) {
-                const postId = card.dataset.postId;
-                const list = card.querySelector('.comments-list');
-                const status = card.querySelector('.media-comments .status');
+        if (prepend) feedGrid.prepend(card);
+        else         feedGrid.appendChild(card);
+    }
 
-                setStatus(status, 'Chargement...', '');
+    /* ─────────────────────────────────────────────────────────
+       FEED
+    ───────────────────────────────────────────────────────── */
+    async function loadFeed(reset = false) {
+        if (loading || (!hasMore && !reset)) return;
+        loading = true;
+        setStatus(feedStatus, 'Chargement...', '');
 
-                try {
-                    const response = await fetch(`/api/media/comments?postId=${encodeURIComponent(postId)}`);
-                    const data = await response.json();
-                    if (!response.ok) {
-                        setStatus(status, data.error || 'Erreur chargement.', 'error');
-                        return;
-                    }
+        if (reset) {
+            offset = 0;
+            hasMore = true;
+            feedGrid.innerHTML = '';
+        }
 
-                    list.innerHTML = '';
-                    (data.comments || []).forEach(comment => {
-                        const item = document.createElement('div');
-                        item.className = 'comment-item';
-                        item.innerHTML = `
-                            <div class="comment-meta">${comment.username || 'Membre'} • ${formatDate(comment.created_at)}</div>
-                            <div>${comment.content}</div>
-                        `;
-                        list.appendChild(item);
-                    });
+        const catParam = activeFilter !== 'tout' ? `&category=${activeFilter}` : '';
 
-                    if (!(data.comments || []).length) {
-                        setStatus(status, 'Aucun commentaire.', '');
-                    } else {
-                        setStatus(status, '', '');
-                    }
-
-                    card.dataset.commentsLoaded = 'true';
-                } catch (error) {
-                    console.error(error);
-                    setStatus(status, 'Erreur chargement.', 'error');
-                }
-            }
-
-            async function handleLike(card, button) {
-                if (!token) {
-                    openLoginModal();
-                    return;
-                }
-
-                const postId = card.dataset.postId;
-                try {
-                    const response = await fetch('/api/media/like', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`
-                        },
-                        body: JSON.stringify({ postId })
-                    });
-
-                    const data = await response.json();
-                    if (!response.ok) {
-                        return;
-                    }
-
-                    button.classList.toggle('liked', data.liked);
-                    const countEl = button.querySelector('.like-count');
-                    if (countEl) countEl.textContent = data.like_count;
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            async function handleCommentSubmit(event) {
-                const form = event.target;
-                if (!form.classList.contains('comment-form')) return;
-                event.preventDefault();
-
-                if (!token) {
-                    openLoginModal();
-                    return;
-                }
-
-                const card = form.closest('.media-card');
-                const input = form.querySelector('input');
-                const value = (input.value || '').trim();
-
-                if (!value) return;
-
-                try {
-                    const response = await fetch('/api/media/comment', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`
-                        },
-                        body: JSON.stringify({ postId: card.dataset.postId, content: value })
-                    });
-
-                    const data = await response.json();
-                    if (!response.ok) {
-                        return;
-                    }
-
-                    const list = card.querySelector('.comments-list');
-                    const newItem = document.createElement('div');
-                    newItem.className = 'comment-item';
-                    newItem.innerHTML = `
-                        <div class="comment-meta">${data.comment.username || 'Membre'} • ${formatDate(data.comment.created_at)}</div>
-                        <div>${data.comment.content}</div>
-                    `;
-                    list.appendChild(newItem);
-                    input.value = '';
-
-                    const countEl = card.querySelector('.comment-count');
-                    if (countEl) countEl.textContent = data.comment_count;
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            async function handleDelete(card) {
-                if (!token) return;
-                const postId = card.dataset.postId;
-                const confirmed = confirm('Supprimer ce post ?');
-                if (!confirmed) return;
-
-                try {
-                    const response = await fetch('/api/media/delete', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Authorization: `Bearer ${token}`
-                        },
-                        body: JSON.stringify({ postId })
-                    });
-
-                    if (response.ok) {
-                        card.remove();
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            document.addEventListener('DOMContentLoaded', async () => {
-                const hamburger = document.getElementById('hamburger');
-                const navMenu = document.getElementById('navMenu');
-
-                if (hamburger && navMenu) {
-                    hamburger.addEventListener('click', () => {
-                        navMenu.classList.toggle('active');
-                        hamburger.classList.toggle('active');
-                    });
-
-                    document.querySelectorAll('.nav-menu a').forEach(link => {
-                        link.addEventListener('click', () => {
-                            navMenu.classList.remove('active');
-                            hamburger.classList.remove('active');
-                        });
-                    });
-                }
-
-                await loadCurrentUser();
-                updateUploadVisibility();
-                await loadFeed(true);
-                const targetPostId = new URLSearchParams(window.location.search).get('post');
-                if (targetPostId) {
-                    await ensurePostVisible(targetPostId);
-                }
+        try {
+            const r = await fetch(`/api/media/feed?limit=${PAGE_SIZE}&offset=${offset}${catParam}`, {
+                headers: token ? { Authorization: `Bearer ${token}` } : {}
             });
+            const d = await r.json();
 
-            if (uploadForm) {
-                uploadForm.addEventListener('submit', uploadMedia);
+            if (!r.ok) {
+                setStatus(feedStatus, d.error || 'Impossible de charger.', 'error');
+                return;
             }
 
-            if (loadMoreBtn) {
-                loadMoreBtn.addEventListener('click', () => loadFeed());
+            const posts = d.posts || [];
+            setStatus(feedStatus, '', '');
+
+            if (posts.length === 0 && offset === 0) {
+                feedGrid.innerHTML = `
+                    <div class="empty-state">
+                        <i class='bx bx-image-alt'></i>
+                        Aucun post dans cette catégorie pour le moment.
+                    </div>`;
+                loadMoreBtn.style.display = 'none';
+                feedCount.textContent = '0 posts';
+                return;
             }
 
-            if (feedGrid) {
-                feedGrid.addEventListener('click', (event) => {
-                    const mediaTarget = event.target.closest('.media-body img, .media-body video');
-                    if (mediaTarget) {
-                        openLightbox(mediaTarget);
-                        return;
-                    }
+            posts.forEach(p => renderPost(p));
+            offset += posts.length;
+            hasMore = d.hasMore;
+            loadMoreBtn.style.display = hasMore ? 'block' : 'none';
+            feedCount.textContent = `${offset} post${offset > 1 ? 's' : ''}`;
+        } catch (e) {
+            console.error(e);
+            setStatus(feedStatus, 'Erreur lors du chargement.', 'error');
+        } finally {
+            loading = false;
+        }
+    }
 
-                    const button = event.target.closest('button[data-action]');
-                    if (!button) return;
-                    const card = button.closest('.media-card');
-                    if (!card) return;
+    /* ─────────────────────────────────────────────────────────
+       UPLOAD
+    ───────────────────────────────────────────────────────── */
+    async function uploadMedia(event) {
+        event.preventDefault();
+        if (!token) { openLoginModal(); return; }
 
-                    const action = button.dataset.action;
-                    if (action === 'like') {
-                        handleLike(card, button);
-                    } else if (action === 'toggle-comments') {
-                        const comments = card.querySelector('.media-comments');
-                        comments.classList.toggle('open');
-                        if (comments.classList.contains('open') && card.dataset.commentsLoaded !== 'true') {
-                            loadComments(card);
-                        }
-                    } else if (action === 'delete') {
-                        handleDelete(card);
-                    }
-                });
+        const fileInput     = document.getElementById('mediaFile');
+        const captionInput  = document.getElementById('mediaCaption');
+        const categoryInput = document.getElementById('mediaCategory');
+        const file          = fileInput.files[0];
 
-                feedGrid.addEventListener('submit', handleCommentSubmit);
-            }
+        if (!file) { setStatus(uploadStatus, 'Choisis un fichier.', 'error'); return; }
 
-            const lightbox = document.getElementById('mediaLightbox');
-            const lightboxContent = document.getElementById('mediaLightboxContent');
-            const lightboxClose = document.getElementById('mediaLightboxClose');
+        const isImage = ALLOWED_IMAGE_TYPES.includes(file.type);
+        const isVideo = ALLOWED_VIDEO_TYPES.includes(file.type);
+        if (!isImage && !isVideo) { setStatus(uploadStatus, 'Format non supporté.', 'error'); return; }
+        if (isImage && file.size > MAX_IMAGE_SIZE) { setStatus(uploadStatus, 'Image trop lourde (max 1 Go).', 'error'); return; }
+        if (isVideo && file.size > MAX_VIDEO_SIZE) { setStatus(uploadStatus, 'Vidéo trop lourde (max 2 Go).', 'error'); return; }
 
-            function openLightbox(target) {
-                if (!lightbox || !lightboxContent) return;
+        setStatus(uploadStatus, 'Upload en cours...', '');
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('caption', captionInput.value || '');
+        formData.append('category', categoryInput.value || 'autres');
 
-                // Remove previous media and caption
-                const existing = lightboxContent.querySelector('img, video');
-                if (existing) existing.remove();
-                const existingCaption = lightboxContent.querySelector('.lightbox-caption');
-                if (existingCaption) existingCaption.remove();
-
-                let mediaEl;
-                if (target.tagName.toLowerCase() === 'video') {
-                    mediaEl = document.createElement('video');
-                    mediaEl.controls = true;
-                    mediaEl.src = target.currentSrc || target.src;
-                    mediaEl.preload = 'metadata';
-                } else {
-                    mediaEl = document.createElement('img');
-                    mediaEl.src = target.src;
-                    mediaEl.alt = target.alt || 'Media';
-                    mediaEl.addEventListener('click', () => {
-                        mediaEl.classList.toggle('zoomed');
-                    });
-                }
-
-                lightboxContent.appendChild(mediaEl);
-
-                // Ajoute la description (caption) sous la photo/vidéo
-                // On remonte jusqu'à la media-card pour trouver la caption
-                let card = target.closest('.media-card');
-                if (card) {
-                    const captionEl = card.querySelector('.media-caption');
-                    if (captionEl && captionEl.textContent.trim() !== '') {
-                        const lightboxCaption = document.createElement('div');
-                        lightboxCaption.className = 'lightbox-caption';
-                        lightboxCaption.textContent = captionEl.textContent;
-                        lightboxCaption.style.marginTop = '1.2rem';
-                        lightboxCaption.style.color = '#fff';
-                        lightboxCaption.style.textAlign = 'center';
-                        lightboxCaption.style.fontSize = '1.13rem';
-                        lightboxCaption.style.lineHeight = '1.5';
-                        lightboxCaption.style.maxWidth = '90%';
-                        lightboxCaption.style.marginLeft = 'auto';
-                        lightboxCaption.style.marginRight = 'auto';
-                        lightboxContent.appendChild(lightboxCaption);
-                    }
-                }
-
-                lightbox.classList.add('active');
-            }
-
-            function closeLightbox() {
-                if (!lightbox) return;
-                lightbox.classList.remove('active');
-                const media = lightboxContent.querySelector('video');
-                if (media) {
-                    media.pause();
-                }
-                const img = lightboxContent.querySelector('img');
-                if (img) {
-                    img.classList.remove('zoomed');
-                }
-            }
-
-            if (lightboxClose) {
-                lightboxClose.addEventListener('click', closeLightbox);
-            }
-
-            if (lightbox) {
-                lightbox.addEventListener('click', (event) => {
-                    if (event.target === lightbox) {
-                        closeLightbox();
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    closeLightbox();
-                }
+        try {
+            const r = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+                headers: { Authorization: `Bearer ${token}` }
             });
-        </script>
-    </body>
-    </html>
+            const d = await r.json();
+            if (!r.ok) { setStatus(uploadStatus, d.error || 'Upload échoué.', 'error'); return; }
+
+            setStatus(uploadStatus, 'Publié avec succès !', 'success');
+            fileInput.value = '';
+            captionInput.value = '';
+
+            const newPost = {
+                id: d.postId || Date.now(),
+                media_type: isVideo ? 'video' : 'image',
+                media_url: d.fileUrl,
+                caption: captionInput.value,
+                category: categoryInput.value || 'autres',
+                created_at: new Date().toISOString(),
+                username: currentUser?.username || 'Membre',
+                like_count: 0,
+                comment_count: 0,
+                liked_by_me: false,
+            };
+            renderPost(newPost, { prepend: true });
+            offset += 1;
+            feedCount.textContent = `${offset} post${offset > 1 ? 's' : ''}`;
+        } catch (e) {
+            console.error(e);
+            setStatus(uploadStatus, 'Erreur lors de l\'upload.', 'error');
+        }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       LIKE (card level)
+    ───────────────────────────────────────────────────────── */
+    async function handleLike(card, button) {
+        if (!token) { openLoginModal(); return; }
+        const postId = card.dataset.postId;
+        try {
+            const r = await fetch('/api/media/like', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ postId })
+            });
+            const d = await r.json();
+            if (!r.ok) return;
+            button.classList.toggle('liked', d.liked);
+            const c = button.querySelector('.like-count');
+            if (c) c.textContent = d.like_count;
+            if (card._postData) card._postData.like_count = d.like_count;
+        } catch (e) { console.error(e); }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       POST DETAIL PANEL
+    ───────────────────────────────────────────────────────── */
+    async function openPostDetail(postId, postData) {
+        detailPostId = postId;
+
+        /* Avatar */
+        buildAvatar(pdAvatar, postData);
+
+        pdUsername.textContent = postData.username || postData.email || 'Membre';
+        pdTime.textContent     = formatDate(postData.created_at);
+
+        /* Media */
+        pdMedia.innerHTML = '';
+        if (postData.media_type === 'video') {
+            const v = document.createElement('video');
+            v.controls = true; v.src = postData.media_url;
+            pdMedia.appendChild(v);
+        } else {
+            const i = document.createElement('img');
+            i.src = postData.media_url; i.alt = postData.caption || 'Media';
+            pdMedia.appendChild(i);
+        }
+
+        /* Badge */
+        const meta = CATEGORY_META[postData.category || 'autres'];
+        pdBadge.className = `post-detail-badge ${meta.badgeClass}`;
+        pdBadge.textContent = `${meta.icon} ${meta.label}`;
+
+        /* Caption */
+        pdCaption.textContent = postData.caption || '';
+
+        /* Like */
+        pdLikeCount.textContent = postData.like_count || 0;
+        pdLikeBtn.className = postData.liked_by_me ? 'liked' : '';
+
+        /* Delete */
+        pdDeleteBtn.style.display = (currentUser && postData.user_id === currentUser.id) ? 'inline-flex' : 'none';
+
+        /* Comment form */
+        pdCommentForm.style.display = token ? 'flex' : 'none';
+
+        /* Open overlay */
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        /* Load comments */
+        await loadDetailComments(postId);
+    }
+
+    function closePostDetail() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        const vid = pdMedia.querySelector('video');
+        if (vid) vid.pause();
+        detailPostId = null;
+    }
+
+    async function loadDetailComments(postId) {
+        setStatus(pdCommentsStatus, 'Chargement...', '');
+        pdCommentsList.innerHTML = '';
+        try {
+            const r = await fetch(`/api/media/comments?postId=${encodeURIComponent(postId)}`);
+            const d = await r.json();
+            if (!r.ok) { setStatus(pdCommentsStatus, d.error || 'Erreur.', 'error'); return; }
+
+            const comments = d.comments || [];
+            pdCommentCount.textContent = comments.length;
+            setStatus(pdCommentsStatus, comments.length ? '' : 'Aucun commentaire pour l\'instant.', '');
+
+            comments.forEach(c => {
+                const item = document.createElement('div');
+                item.className = 'comment-item';
+                item.innerHTML = `
+                    <div class="comment-meta">
+                        <strong>${c.username || 'Membre'}</strong>
+                        <span>•</span>
+                        <span>${formatDate(c.created_at)}</span>
+                    </div>
+                    <div>${c.content}</div>`;
+                pdCommentsList.appendChild(item);
+            });
+            pdCommentsList.scrollTop = pdCommentsList.scrollHeight;
+        } catch (e) {
+            console.error(e);
+            setStatus(pdCommentsStatus, 'Erreur chargement.', 'error');
+        }
+    }
+
+    async function submitDetailComment(event) {
+        event.preventDefault();
+        if (!token) { openLoginModal(); return; }
+        const value = (pdCommentInput.value || '').trim();
+        if (!value || !detailPostId) return;
+
+        try {
+            const r = await fetch('/api/media/comment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ postId: detailPostId, content: value })
+            });
+            const d = await r.json();
+            if (!r.ok) return;
+
+            const item = document.createElement('div');
+            item.className = 'comment-item';
+            item.innerHTML = `
+                <div class="comment-meta">
+                    <strong>${d.comment.username || 'Membre'}</strong>
+                    <span>•</span>
+                    <span>${formatDate(d.comment.created_at)}</span>
+                </div>
+                <div>${d.comment.content}</div>`;
+            pdCommentsList.appendChild(item);
+            pdCommentInput.value = '';
+            setStatus(pdCommentsStatus, '', '');
+            pdCommentCount.textContent = parseInt(pdCommentCount.textContent || '0') + 1;
+            pdCommentsList.scrollTop = pdCommentsList.scrollHeight;
+
+            /* Update count on card */
+            const card = feedGrid.querySelector(`.media-card[data-post-id="${detailPostId}"]`);
+            if (card) {
+                const cc = card.querySelector('.comment-count');
+                if (cc) cc.textContent = d.comment_count;
+            }
+        } catch (e) { console.error(e); }
+    }
+
+    async function handleDetailLike() {
+        if (!token) { openLoginModal(); return; }
+        if (!detailPostId) return;
+        try {
+            const r = await fetch('/api/media/like', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ postId: detailPostId })
+            });
+            const d = await r.json();
+            if (!r.ok) return;
+            pdLikeBtn.classList.toggle('liked', d.liked);
+            pdLikeCount.textContent = d.like_count;
+
+            /* Sync card */
+            const card = feedGrid.querySelector(`.media-card[data-post-id="${detailPostId}"]`);
+            if (card) {
+                const likeBtn = card.querySelector('button[data-action="like"]');
+                if (likeBtn) {
+                    likeBtn.classList.toggle('liked', d.liked);
+                    const lc = likeBtn.querySelector('.like-count');
+                    if (lc) lc.textContent = d.like_count;
+                }
+            }
+        } catch (e) { console.error(e); }
+    }
+
+    async function handleDetailDelete() {
+        if (!token || !detailPostId) return;
+        if (!confirm('Supprimer ce post définitivement ?')) return;
+        try {
+            const r = await fetch('/api/media/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                body: JSON.stringify({ postId: detailPostId })
+            });
+            if (r.ok) {
+                const card = feedGrid.querySelector(`.media-card[data-post-id="${detailPostId}"]`);
+                if (card) card.remove();
+                closePostDetail();
+            }
+        } catch (e) { console.error(e); }
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       EVENT LISTENERS
+    ───────────────────────────────────────────────────────── */
+
+    /* Filter tabs */
+    filterTabs.addEventListener('click', (e) => {
+        const tab = e.target.closest('.filter-tab');
+        if (!tab) return;
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeFilter = tab.dataset.cat;
+        loadFeed(true);
+    });
+
+    /* Feed grid delegation */
+    feedGrid.addEventListener('click', (e) => {
+        const likeBtn = e.target.closest('button[data-action="like"]');
+        if (likeBtn) {
+            e.stopPropagation();
+            const card = likeBtn.closest('.media-card');
+            handleLike(card, likeBtn);
+            return;
+        }
+        const openBtn = e.target.closest('button[data-action="open-detail"], .media-body img, .media-body video');
+        if (openBtn) {
+            e.stopPropagation();
+            const card = openBtn.closest('.media-card');
+            if (card && card._postData) openPostDetail(card.dataset.postId, card._postData);
+            return;
+        }
+        /* Click on card itself also opens detail */
+        const card = e.target.closest('.media-card');
+        if (card && card._postData) openPostDetail(card.dataset.postId, card._postData);
+    });
+
+    /* Detail panel */
+    postDetailClose.addEventListener('click', closePostDetail);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closePostDetail(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePostDetail(); });
+    pdLikeBtn.addEventListener('click', handleDetailLike);
+    pdDeleteBtn.addEventListener('click', handleDetailDelete);
+    pdCommentForm.addEventListener('submit', submitDetailComment);
+
+    /* Upload */
+    if (uploadForm) uploadForm.addEventListener('submit', uploadMedia);
+
+    /* Load more */
+    if (loadMoreBtn) loadMoreBtn.addEventListener('click', () => loadFeed());
+
+    /* ─────────────────────────────────────────────────────────
+       INIT
+    ───────────────────────────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', async () => {
+        /* Hamburger */
+        const hamburger = document.getElementById('hamburger');
+        const navMenu   = document.getElementById('navMenu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+        }
+
+        await loadCurrentUser();
+        updateUploadVisibility();
+        await loadFeed(true);
+
+        /* Deep-link: ?post=xxx */
+        const targetPostId = new URLSearchParams(window.location.search).get('post');
+        if (targetPostId) {
+            const card = feedGrid.querySelector(`.media-card[data-post-id="${targetPostId}"]`);
+            if (card && card._postData) openPostDetail(targetPostId, card._postData);
+        }
+    });
+    </script>
+</body>
+</html>
