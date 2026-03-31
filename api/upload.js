@@ -67,6 +67,7 @@ module.exports = async function handler(req, res) {
   let fileName = '';
   let fileSize = 0;
   let caption = '';
+  let category = '';
   let parseError = null;
 
   const busboy = Busboy({ headers: req.headers });
@@ -74,6 +75,9 @@ module.exports = async function handler(req, res) {
   busboy.on('field', (name, value) => {
     if (name === 'caption') {
       caption = value || '';
+    }
+    if (name === 'category') {
+      category = value || '';
     }
   });
 
@@ -165,6 +169,7 @@ module.exports = async function handler(req, res) {
       media_url: mediaUrl,
       media_type: mediaType,
       caption: caption ? caption.trim() : null,
+      category: category ? category.trim() : null,
       created_at: new Date().toISOString(),
       file_path: filePath,
       like_count: 0,
